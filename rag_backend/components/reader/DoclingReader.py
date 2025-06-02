@@ -79,9 +79,9 @@ class DoclingReader(Reader):
                 # Handle Pydantic model
                 if hasattr(config, key):
                     setting = getattr(config, key)
-                    if hasattr(setting, "value"):
-                        return str(setting.value)
-                    return str(setting)
+                if hasattr(setting, "value"):
+                    return str(setting.value)
+                return str(setting)
                 return default
         except Exception:
             return default

@@ -5,6 +5,7 @@ import base64
 from rag_backend.rag_manager import RAGManager
 from rag_backend.server.types import FileConfig
 from rag_backend.server.helpers import LoggerManager
+from rag_backend.components.types import InputConfig
 
 def read_file_as_base64(path):
     """Read a file as bytes and return a base64-encoded string."""
@@ -41,7 +42,7 @@ The RAG pipeline consists of several key components:
     
     return test_file
 
-def create_file_config(test_file, reader="Default", chunker="Recursive"):
+def create_file_config(test_file, reader="Default", chunker="Recursive", embedder="SentenceTransformers"):
     """Create a FileConfig with test configuration."""
     file_content = read_file_as_base64(test_file)
     
@@ -162,7 +163,7 @@ def create_file_config(test_file, reader="Default", chunker="Recursive"):
             }
         },
         "Embedder": {
-            "selected": "SentenceTransformers",
+            "selected": embedder,
             "components": {
                 "SentenceTransformers": {
                     "name": "SentenceTransformers",
@@ -184,9 +185,56 @@ def create_file_config(test_file, reader="Default", chunker="Recursive"):
                                 "paraphrase-MiniLM-L6-v2"
                             ],
                             "value": "all-MiniLM-L6-v2"
+                        },
+                        "vector_dimension": {
+                            "type": "number",
+                            "value": 384,
+                            "description": "Vector dimension for SentenceTransformers",
+                            "values": []
                         }
                     },
-                    "max_batch_size": 32
+                    "max_batch_size": 32,
+                },
+                "Ollama": {
+                    "name": "Ollama",
+                    "type": "Embedder",
+                    "description": "Test embedder using Ollama",
+                    "library": ["aiohttp"],
+                    "available": True,
+                    "variables": [],
+                    "config": {
+                        "Model": {
+                            "type": "dropdown",
+                            "description": "Select an Ollama model",
+                            "values": ["nomic-embed-text", "llama2", "mistral"],
+                            "value": "nomic-embed-text"
+                        },
+                        "Batch Size": {
+                            "type": "number",
+                            "description": "Number of texts to process in a single batch",
+                            "values": [],
+                            "value": "32"
+                        },
+                        "Timeout": {
+                            "type": "number",
+                            "description": "Timeout in seconds for embedding requests",
+                            "values": [],
+                            "value": "30"
+                        },
+                        "Retry Attempts": {
+                            "type": "number",
+                            "description": "Number of retry attempts for failed requests",
+                            "values": [],
+                            "value": "3"
+                        },
+                        "vector_dimension": {
+                            "type": "number",
+                            "value": 768,
+                            "description": "Vector dimension for Ollama",
+                            "values": []
+                        }
+                    },
+                    "max_batch_size": 32,
                 }
             }
         },
@@ -253,9 +301,9 @@ def create_file_config(test_file, reader="Default", chunker="Recursive"):
         status_report={}
     )
 
-async def test_pipeline(reader_name: str, chunker_name: str):
-    """Test the RAG pipeline with specified reader and chunker"""
-    print(f"\n=== Testing Pipeline: {reader_name} Reader + {chunker_name} Chunker ===\n")
+async def test_pipeline(reader_name: str, chunker_name: str, embedder_name: str):
+    """Test the RAG pipeline with specified reader, chunker, and embedder"""
+    print(f"\n=== Testing Pipeline: {reader_name} Reader + {chunker_name} Chunker + {embedder_name} Embedder ===\n")
     
     # Initialize RAG manager
     rag_manager = RAGManager()
@@ -264,23 +312,32 @@ async def test_pipeline(reader_name: str, chunker_name: str):
     try:
         # Create test file and config
         test_file = create_test_file()
-        file_config = create_file_config(test_file, reader_name, chunker_name)
-        
+        file_config = create_file_config(test_file, reader_name, chunker_name, embedder_name)
+    
         # 1. Connect to Qdrant
         print("1. Connecting to Qdrant...")
         client = await rag_manager.connect("Qdrant", url="localhost", port=6333)
         if not client:
             raise Exception("Failed to connect to Qdrant")
         print("✓ Successfully connected to Qdrant\n")
-        
+
         # 2. Import document
         print("2. Importing document...")
-        collection_name = f"test_collection_{reader_name}_{chunker_name}"
+        collection_name = f"test_collection_{reader_name}_{chunker_name}_{embedder_name}"
+        
+        # Get vector size from embedder config
+        component = file_config.rag_config["Embedder"].components[embedder_name]
+        embedder_config = component.config
+        vector_dimension = getattr(component, "vector_dimension", None)
+        if vector_dimension is not None:
+            embedder_config = dict(embedder_config)  # make a copy
+            embedder_config["vector_dimension"] = vector_dimension
+        vector_size = rag_manager.embedder_manager.embedders[embedder_name].get_vector_size(embedder_config)
         
         # Create collection first
         collection_created = await rag_manager.vector_store_manager.create_collection(
             collection_name,
-            vector_size=384  # Default size for sentence-transformers
+            vector_size=vector_size
         )
         if not collection_created:
             raise Exception(f"Failed to create collection {collection_name}")
@@ -292,7 +349,7 @@ async def test_pipeline(reader_name: str, chunker_name: str):
             collection_name
         )
         print("✓ Document imported successfully\n")
-        
+
         # 3. Test retrieval
         print("3. Testing retrieval...")
         query = "What are the key components of the RAG pipeline?"
@@ -311,9 +368,9 @@ async def test_pipeline(reader_name: str, chunker_name: str):
             print(f"- {doc['title']}")
         print("\nContext:")
         print(context)
-        
+
         print("\n✓ Retrieval successful")
-        
+
     except Exception as e:
         print(f"\n❌ Error: {str(e)}")
         raise
@@ -329,11 +386,16 @@ async def test_pipeline(reader_name: str, chunker_name: str):
 async def main():
     """Run all test configurations."""
     try:
-        # Test different combinations of readers and chunkers
-        await test_pipeline("Default", "Recursive")
-        await test_pipeline("Default", "Sentence")
-        await test_pipeline("Docling", "Recursive")
-        await test_pipeline("Docling", "Sentence")
+        # Test all combinations of readers, chunkers, and embedders
+        readers = ["Default", "Docling"]
+        chunkers = ["Recursive", "Sentence"]
+        embedders = ["SentenceTransformers", "Ollama"]
+        
+        for reader in readers:
+            for chunker in chunkers:
+                for embedder in embedders:
+                    await test_pipeline(reader, chunker, embedder)
+        
         print("\n✓ All test configurations completed successfully!")
     except Exception as e:
         print(f"\n❌ Test suite failed: {str(e)}")

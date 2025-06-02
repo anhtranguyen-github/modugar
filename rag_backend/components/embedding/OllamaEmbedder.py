@@ -27,6 +27,15 @@ class OllamaEmbedder(Embedding):
             ),
         }
 
+    def get_vector_size(self, config: dict) -> int:
+        """Get the vector size (dimension) for the configured model."""
+        if "vector_dimension" in config:
+            dim = config["vector_dimension"]
+            if hasattr(dim, "value"):
+                return int(dim.value)
+            return int(dim)
+        return 768  # fallback for Ollama
+
     async def vectorize(self, config: dict, content: list[str]) -> list[float]:
 
         model = config.get("Model").value

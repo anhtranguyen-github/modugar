@@ -60,6 +60,7 @@ class WindowRetriever(Retriever):
         embedder,
         labels,
         document_uuids,
+        collection_name: str,
     ):
         # Initialize vector store manager if not already set
         if self._vector_store_manager is None:
@@ -73,9 +74,6 @@ class WindowRetriever(Retriever):
         window = max(0, min(10, int(config["Chunk Window"].value)))
         window_threshold = max(0, min(100, int(config["Threshold"].value)))
         window_threshold /= 100
-
-        # Get collection name from vector store config
-        collection_name = "test_collection"  # This should match the collection name used in the test
 
         if search_mode == "Hybrid Search":
             # Use vector store manager for search

@@ -2,6 +2,7 @@ from typing import Any, List, Dict
 from qdrant_client import QdrantClient, AsyncQdrantClient
 from qdrant_client.http import models
 from qdrant_client.http.models import Distance, VectorParams, PointStruct
+from qdrant_client.grpc import Filter, FieldCondition, Match, Range, Condition
 import uuid
 
 from rag_backend.components.interfaces import VectorStore
@@ -110,54 +111,139 @@ class QdrantStore(VectorStore):
         except Exception as e:
             raise Exception(f"Failed to insert vectors into {collection_name}: {str(e)}")
     
-    async def search_vectors(self, collection_name: str, query_vector: List[float], limit: int, **kwargs) -> List[Dict]:
-        """Search for similar vectors in Qdrant collection"""
-        try:
-            filters = kwargs.get('filters', None)
-            score_threshold = kwargs.get('score_threshold', None)
-            
-            # Convert filters to Qdrant format
-            qdrant_filter = None
-            if filters:
-                from qdrant_client.http import models as rest
-                conditions = []
-                
-                if "must" in filters:
-                    for condition in filters["must"]:
-                        if "key" in condition and "match" in condition:
-                            field_name = condition["key"]
-                            match_value = condition["match"]
-                            if "any" in match_value:
-                                conditions.append(
-                                    rest.FieldCondition(
-                                        key=field_name,
-                                        match=rest.MatchAny(any=match_value["any"])
+    def _convert_filters(self, filters: dict) -> Filter:
+        """Convert standard filter format to Qdrant gRPC filter format"""
+        if not filters:
+            return None
+
+        must_conditions = []
+        should_conditions = []
+
+        if "must" in filters:
+            for condition in filters["must"]:
+                if "key" in condition and "match" in condition:
+                    match = condition["match"]
+                    if "value" in match:
+                        value = match["value"]
+                        if isinstance(value, str):
+                            must_conditions.append(
+                                Condition(
+                                    field=FieldCondition(
+                                        key=condition["key"],
+                                        match=Match(text=value)
                                     )
                                 )
-                
-                if conditions:
-                    qdrant_filter = rest.Filter(
-                        must=conditions
-                    )
+                            )
+                        elif isinstance(value, bool):
+                            must_conditions.append(
+                                Condition(
+                                    field=FieldCondition(
+                                        key=condition["key"],
+                                        match=Match(boolean=value)
+                                    )
+                                )
+                            )
+                        elif isinstance(value, int):
+                            must_conditions.append(
+                                Condition(
+                                    field=FieldCondition(
+                                        key=condition["key"],
+                                        match=Match(integer=value)
+                                    )
+                                )
+                            )
+                        elif isinstance(value, float):
+                            must_conditions.append(
+                                Condition(
+                                    field=FieldCondition(
+                                        key=condition["key"],
+                                        match=Match(double=value)
+                                    )
+                                )
+                            )
+                        else:
+                            raise ValueError(f"Unsupported value type for gRPC filter: {type(value)}")
+                    elif "range" in match:
+                        must_conditions.append(
+                            Condition(
+                                field=FieldCondition(
+                                    key=condition["key"],
+                                    range=Range(**match["range"])
+                                )
+                            )
+                        )
+                    elif "any" in match:
+                        for value in match["any"]:
+                            if isinstance(value, str):
+                                should_conditions.append(
+                                    Condition(
+                                        field=FieldCondition(
+                                            key=condition["key"],
+                                            match=Match(text=value)
+                                        )
+                                    )
+                                )
+                            elif isinstance(value, bool):
+                                should_conditions.append(
+                                    Condition(
+                                        field=FieldCondition(
+                                            key=condition["key"],
+                                            match=Match(boolean=value)
+                                        )
+                                    )
+                                )
+                            elif isinstance(value, int):
+                                should_conditions.append(
+                                    Condition(
+                                        field=FieldCondition(
+                                            key=condition["key"],
+                                            match=Match(integer=value)
+                                        )
+                                    )
+                                )
+                            elif isinstance(value, float):
+                                should_conditions.append(
+                                    Condition(
+                                        field=FieldCondition(
+                                            key=condition["key"],
+                                            match=Match(double=value)
+                                        )
+                                    )
+                                )
+                            else:
+                                raise ValueError(f"Unsupported value type in 'any' filter: {type(value)}")
+        # Combine must and should conditions
+        return Filter(must=must_conditions if must_conditions else None, should=should_conditions if should_conditions else None) if must_conditions or should_conditions else None
+
+    async def search_vectors(self, collection_name: str, query_vector: List[float], limit: int, **kwargs) -> List[Dict]:
+        """Search for similar vectors in the collection"""
+        try:
+            filters = kwargs.get('filters', None)
             
-            # Perform search
-            search_result = await self.client.search(
+            # Convert filters to Qdrant format if provided
+            query_filter = self._convert_filters(filters) if filters else None
+            
+            # Use query_points with proper parameters
+            search_result = await self.client.query_points(
                 collection_name=collection_name,
-                query_vector=query_vector,
+                query=query_vector,
                 limit=limit,
-                query_filter=qdrant_filter,
-                score_threshold=score_threshold
+                with_payload=True,
+                with_vectors=False,
+                score_threshold=None,
+                query_filter=query_filter
             )
             
-            # Format results
-            return [
-                {
-                    'id': str(point.id),
-                    'score': point.score,
-                    'metadata': point.payload
-                }
-                for point in search_result
-            ]
+            # Convert results to standard format
+            results = []
+            for point in search_result.points:
+                results.append({
+                    "id": point.id,
+                    "score": point.score,
+                    "metadata": point.payload
+                })
+            
+            return results
             
         except Exception as e:
             raise Exception(f"Failed to search vectors in {collection_name}: {str(e)}")

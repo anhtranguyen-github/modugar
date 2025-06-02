@@ -55,10 +55,15 @@ class RAGManager:
         try:
             start_time = asyncio.get_event_loop().time()
 
+            # Get vector size from embedder config
+            embedder_name = file_config.rag_config["Embedder"].selected
+            embedder_config = file_config.rag_config["Embedder"].components[embedder_name].config
+            vector_size = self.embedder_manager.embedders[embedder_name].get_vector_size(embedder_config)
+
             # Create collection if it doesn't exist
             collection_created = await self.vector_store_manager.create_collection(
                 collection_name,
-                vector_size=384  # Default size for sentence-transformers
+                vector_size=vector_size
             )
             if not collection_created:
                 raise Exception(f"Failed to create collection {collection_name}")
@@ -77,13 +82,13 @@ class RAGManager:
                     file_config.rag_config["Chunker"].selected,
                     file_config,
                     [document],
-                    self.embedder_manager.embedders[file_config.rag_config["Embedder"].selected],
+                    self.embedder_manager.embedders[embedder_name],
                     logger
                 )
 
                 # Embed chunks
                 vectorized_documents = await self.embedder_manager.vectorize(
-                    file_config.rag_config["Embedder"].selected,
+                    embedder_name,
                     file_config,
                     chunked_documents,
                     logger
@@ -134,32 +139,37 @@ class RAGManager:
         query: str,
         rag_config: dict,
         collection_name: str,
-        labels: List[str] = None,
-        document_uuids: List[str] = None
-    ) -> tuple[List[dict], str]:
-        """Retrieve relevant chunks for a query."""
+        labels: Optional[list[str]] = None,
+        document_uuids: Optional[list[str]] = None,
+        logger: Optional[LoggerManager] = None
+    ) -> tuple[list[dict], str]:
+        """Retrieve relevant chunks from the vector store."""
+        if logger is None:
+            logger = self.logger
+
         try:
-            # Get query vector
-            embedder = rag_config["Embedder"].selected
+            # Get query vector using the embedder
+            embedder_name = rag_config["Embedder"].selected
             query_vector = await self.embedder_manager.vectorize_query(
-                embedder,
+                embedder_name,
                 query,
                 rag_config
             )
 
-            # Get retriever and set vector store manager
+            # Get the retriever and set its vector store manager
             retriever = self.retriever_manager.retrievers[rag_config["Retriever"].selected]
             retriever._vector_store_manager = self.vector_store_manager
 
-            # Retrieve documents and context
+            # Retrieve chunks
             documents, context = await retriever.retrieve(
-                client=client,
-                query=query,
-                vector=query_vector,
-                config=rag_config["Retriever"].components[rag_config["Retriever"].selected].config,
-                embedder=embedder,
-                labels=labels or [],
-                document_uuids=document_uuids or []
+                client,
+                query,
+                query_vector,
+                rag_config["Retriever"].components[rag_config["Retriever"].selected].config,
+                self.embedder_manager.embedders[embedder_name],
+                labels,
+                document_uuids,
+                collection_name  # Pass the collection name to the retriever
             )
 
             return documents, context

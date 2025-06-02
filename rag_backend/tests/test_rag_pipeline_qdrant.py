@@ -20,6 +20,9 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings(
     "ignore", message=".*validate_tree.*", category=DeprecationWarning
 )
+# Suppress NumPy warnings
+warnings.filterwarnings("ignore", message="Mean of empty slice", category=RuntimeWarning)
+warnings.filterwarnings("ignore", message="invalid value encountered in scalar divide", category=RuntimeWarning)
 
 
 def read_file_as_base64(path):
@@ -348,6 +351,7 @@ async def test_rag_pipeline_qdrant():
             embedder=file_config.rag_config["Embedder"].selected,
             labels=file_config.labels,
             document_uuids=[file_config.fileID],
+            collection_name=collection_name
         )
 
         print(f"\nRetrieved {len(documents)} documents")

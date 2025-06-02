@@ -35,9 +35,23 @@ class SentenceTransformersEmbedder(Embedding):
 
     async def vectorize(self, config: dict, content: list[str]) -> list[float]:
         try:
-            model_name = config.get("Model").value
+            model_name = config["Model"].value if hasattr(config["Model"], "value") else config["Model"]
             model = SentenceTransformer(model_name)
             embeddings = model.encode(content).tolist()
             return embeddings
         except Exception as e:
             raise Exception(f"Failed to vectorize chunks: {str(e)}")
+
+    def get_vector_size(self, config: dict) -> int:
+        """Get the vector size (dimension) for the configured model."""
+        if "vector_dimension" in config:
+            dim = config["vector_dimension"]
+            if hasattr(dim, "value"):
+                return int(dim.value)
+            return int(dim)
+        try:
+            model_name = config["Model"].value if hasattr(config["Model"], "value") else config["Model"]
+            model = SentenceTransformer(model_name)
+            return model.get_sentence_embedding_dimension()
+        except Exception:
+            return 384  # fallback
