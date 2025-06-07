@@ -1,4 +1,0 @@
-❌ Pipeline Default-Recursive-Ollama failed: Failed to insert vectors into collection test_collection
-❌ Pipeline Default-Sentence-Ollama failed: Failed to insert vectors into collection test_collection
-❌ Pipeline Docling-Recursive-Ollama failed: Failed to insert vectors into collection test_collection
-❌ Pipeline Docling-Sentence-Ollama failed: Failed to insert vectors into collection test_collection

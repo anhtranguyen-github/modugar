@@ -1,1 +1,0 @@
-❌ Pipeline Default-Recursive-Ollama failed: Connection failed: WeaviateStore.connect() got an unexpected keyword argument 'api_key'
