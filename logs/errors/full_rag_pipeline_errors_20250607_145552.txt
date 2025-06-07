@@ -1,0 +1,4 @@
+Error: Generation failed: string indices must be integers, not 'str'
+Error: Generation failed: string indices must be integers, not 'str'
+Error: Generation failed: string indices must be integers, not 'str'
+Error: Generation failed: string indices must be integers, not 'str'

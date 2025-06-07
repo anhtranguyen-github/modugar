@@ -72,8 +72,8 @@ async def test_rag_pipeline_qdrant():
 
     file_config = FileConfig(
         filename=str(test_file),
-        content=file_content,  # Pass base64 encoded content
-        extension=".pdf",  # Updated to PDF
+        content=file_content,
+        extension=".pdf",
         file_size=len(file_content),
         labels=["test", "pdf"],
         source="local",
@@ -200,6 +200,12 @@ async def test_rag_pipeline_qdrant():
                                 "values": [],
                                 "value": "384",
                             },
+                            "Distance": {
+                                "type": "dropdown",
+                                "description": "Distance metric for vector similarity",
+                                "values": ["Cosine", "Euclidean", "Dot"],
+                                "value": "Cosine",
+                            }
                         },
                     }
                 },
@@ -299,10 +305,13 @@ async def test_rag_pipeline_qdrant():
         )
         collection_name = vector_store_config["Collection Name"].value
         vector_size = int(vector_store_config["Vector Size"].value)
+        distance = vector_store_config["Distance"].value
 
-        # Create collection if it doesn't exist
+        # Create collection with consistent schema
         await vector_store_manager.create_collection(
-            collection_name, vector_size=vector_size
+            collection_name,
+            vector_size=vector_size,
+            distance=distance
         )
 
         # Prepare vectors and metadata for insertion
@@ -316,6 +325,8 @@ async def test_rag_pipeline_qdrant():
                         "text": chunk.content,
                         "doc_id": file_config.fileID,
                         "chunk_id": chunk.chunk_id,
+                        "title": doc.title,
+                        "labels": doc.labels
                     }
                 )
 

@@ -1287,10 +1287,16 @@ class VectorStoreManager:
             return client
         return None
     
-    async def disconnect(self) -> bool:
+    async def disconnect(self, client: Any = None) -> bool:
         """Disconnect from the active vector store"""
         if self.active_store:
             return await self.active_store.disconnect()
+        return False
+    
+    async def is_ready(self, client: Any) -> bool:
+        """Check if the vector store is ready"""
+        if self.active_store:
+            return await self.active_store.is_ready()
         return False
     
     async def create_collection(self, collection_name: str, **kwargs) -> bool:

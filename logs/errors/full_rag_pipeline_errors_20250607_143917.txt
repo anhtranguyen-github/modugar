@@ -1,0 +1,36 @@
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+❌ Pipeline Default-Recursive-Ollama failed: Failed to insert vectors into collection test_collection
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+❌ Pipeline Default-Sentence-Ollama failed: Failed to insert vectors into collection test_collection
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+❌ Pipeline Docling-Recursive-Ollama failed: Failed to insert vectors into collection test_collection
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+Error: object async_generator can't be used in 'await' expression
+❌ Pipeline Docling-Sentence-Ollama failed: Failed to insert vectors into collection test_collection

@@ -206,7 +206,7 @@ def create_file_config(test_file, reader="Default", chunker="Recursive", embedde
                         "Model": {
                             "type": "dropdown",
                             "description": "Select an Ollama model",
-                            "values": ["nomic-embed-text", "llama2", "mistral"],
+                            "values": ["nomic-embed-text", "llama2", "qwen3:8b"],
                             "value": "nomic-embed-text"
                         },
                         "Batch Size": {

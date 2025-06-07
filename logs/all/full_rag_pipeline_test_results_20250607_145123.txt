@@ -1,0 +1,1847 @@
+
+=== Testing Full RAG Pipeline with All Component Combinations ===
+
+Test started at: 2025-06-07 14:51:23
+
+
+Testing 8 combinations...
+
+Testing combination 1/8
+Pipeline: Default-Recursive-SentenceTransformers
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: SentenceTransformers
+==================================================
+
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the RAG pipeline...
+
+Test Case 1:
+
+Question: What are the main components of the RAG pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.58
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.59
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.77
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.44
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.46
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 2:
+
+Question: How does the chunking process work?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.18
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.37
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.28
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.42
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.26
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 3:
+
+Question: What is the role of the embedder in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.32
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.50
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.45
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.45
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.50
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 4:
+
+Question: How does the vector store contribute to the RAG system?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.30
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.51
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.44
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.39
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.54
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 5:
+
+Question: What is the purpose of the retriever component?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.20
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.20
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.26
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.25
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.41
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 6:
+
+Question: How does the generator use the retrieved context?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.23
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.23
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.28
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.25
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.42
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 7:
+
+Question: What are the different types of chunkers available?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.18
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.30
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.23
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.39
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.32
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 8:
+
+Question: What embedding models are supported in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.31
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.52
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.37
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.47
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.56
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Cleaning up...
+✓ Cleanup completed
+✓ Pipeline Default-Recursive-SentenceTransformers completed successfully
+
+Testing combination 2/8
+Pipeline: Default-Recursive-Ollama
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: Ollama
+==================================================
+
+Checking Ollama connection...
+✓ Ollama connection successful
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+
+❌ Error: Failed to insert vectors into collection test_collection
+
+Cleaning up...
+✓ Cleanup completed
+❌ Pipeline Default-Recursive-Ollama failed: Failed to insert vectors into collection test_collection
+
+Testing combination 3/8
+Pipeline: Default-Sentence-SentenceTransformers
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Sentence
+Embedder: SentenceTransformers
+==================================================
+
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the RAG pipeline...
+
+Test Case 1:
+
+Question: What are the main components of the RAG pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.58
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.56
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.44
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.39
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.51
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 2:
+
+Question: How does the chunking process work?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.36
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.40
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.43
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.34
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.29
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 3:
+
+Question: What is the role of the embedder in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.42
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.47
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.46
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.52
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.37
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 4:
+
+Question: How does the vector store contribute to the RAG system?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.45
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.51
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.38
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.49
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.27
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 5:
+
+Question: What is the purpose of the retriever component?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.22
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.28
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.28
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.29
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.38
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 6:
+
+Question: How does the generator use the retrieved context?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.25
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.28
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.24
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.25
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.44
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 7:
+
+Question: What are the different types of chunkers available?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.28
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.31
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.41
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.38
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.32
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 8:
+
+Question: What embedding models are supported in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.43
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline. 
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.48
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Here we have some technical details about the implementation. 
+The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.47
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.57
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.41
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Cleaning up...
+✓ Cleanup completed
+✓ Pipeline Default-Sentence-SentenceTransformers completed successfully
+
+Testing combination 4/8
+Pipeline: Default-Sentence-Ollama
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Sentence
+Embedder: Ollama
+==================================================
+
+Checking Ollama connection...
+✓ Ollama connection successful
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+
+❌ Error: Failed to insert vectors into collection test_collection
+
+Cleaning up...
+✓ Cleanup completed
+❌ Pipeline Default-Sentence-Ollama failed: Failed to insert vectors into collection test_collection
+
+Testing combination 5/8
+Pipeline: Docling-Recursive-SentenceTransformers
+
+=== Testing Pipeline Configuration ===
+Reader: Docling
+Chunker: Recursive
+Embedder: SentenceTransformers
+==================================================
+
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the RAG pipeline...
+
+Test Case 1:
+
+Question: What are the main components of the RAG pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.61
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.48
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.77
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.44
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.46
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 2:
+
+Question: How does the chunking process work?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.19
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.32
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.28
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.42
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.26
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 3:
+
+Question: What is the role of the embedder in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.30
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.46
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.46
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.45
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.50
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 4:
+
+Question: How does the vector store contribute to the RAG system?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.33
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.43
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.44
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.39
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.54
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 5:
+
+Question: What is the purpose of the retriever component?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.18
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.17
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.26
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.25
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.41
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 6:
+
+Question: How does the generator use the retrieved context?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.21
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.19
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.27
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.25
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.42
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 7:
+
+Question: What are the different types of chunkers available?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.17
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.28
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.24
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.39
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.32
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 8:
+
+Question: What embedding models are supported in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.30
+# Test Document
+
+This is a test document for the RAG pipeline.
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.51
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+Chunk: 3
+High Relevancy: 0.39
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.47
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.56
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Cleaning up...
+✓ Cleanup completed
+✓ Pipeline Docling-Recursive-SentenceTransformers completed successfully
+
+Testing combination 6/8
+Pipeline: Docling-Recursive-Ollama
+
+=== Testing Pipeline Configuration ===
+Reader: Docling
+Chunker: Recursive
+Embedder: Ollama
+==================================================
+
+Checking Ollama connection...
+✓ Ollama connection successful
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+
+❌ Error: Failed to insert vectors into collection test_collection
+
+Cleaning up...
+✓ Cleanup completed
+❌ Pipeline Docling-Recursive-Ollama failed: Failed to insert vectors into collection test_collection
+
+Testing combination 7/8
+Pipeline: Docling-Sentence-SentenceTransformers
+
+=== Testing Pipeline Configuration ===
+Reader: Docling
+Chunker: Sentence
+Embedder: SentenceTransformers
+==================================================
+
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the RAG pipeline...
+
+Test Case 1:
+
+Question: What are the main components of the RAG pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.58
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.56
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.44
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.39
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.51
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 2:
+
+Question: How does the chunking process work?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.36
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.40
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.43
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.34
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.29
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 3:
+
+Question: What is the role of the embedder in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.42
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.47
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.46
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.52
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.37
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 4:
+
+Question: How does the vector store contribute to the RAG system?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.45
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.51
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.38
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.49
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.27
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 5:
+
+Question: What is the purpose of the retriever component?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.22
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.28
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.28
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.29
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.38
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 6:
+
+Question: How does the generator use the retrieved context?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.25
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.28
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.24
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.25
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.44
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 7:
+
+Question: What are the different types of chunkers available?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.28
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.31
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.41
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.38
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.32
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Test Case 8:
+
+Question: What embedding models are supported in the pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.43
+# Test Document
+
+This is a test document for the RAG pipeline. 
+
+## Section 1: Introduction
+
+This is the first section with some important information about the RAG pipeline. 
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation.
+Chunk: 2
+High Relevancy: 0.48
+
+
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+
+## Section 2: Technical Details
+
+Here we have some technical details about the implementation. The RAG pipeline consists of several key components:
+
+1. Document Reader: Processes input files and extracts text
+2.
+Chunk: 3
+High Relevancy: 0.47
+Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+4.
+Chunk: 4
+High Relevancy: 0.57
+Embedder: Converts text chunks into vector embeddings
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6.
+Chunk: 5
+High Relevancy: 0.41
+Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Error: Generation failed: string indices must be integers, not 'str'
+--------------------------------------------------------------------------------
+
+Cleaning up...
+✓ Cleanup completed
+✓ Pipeline Docling-Sentence-SentenceTransformers completed successfully
+
+Testing combination 8/8
+Pipeline: Docling-Sentence-Ollama
+
+=== Testing Pipeline Configuration ===
+Reader: Docling
+Chunker: Sentence
+Embedder: Ollama
+==================================================
+
+Checking Ollama connection...
+✓ Ollama connection successful
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+
+❌ Error: Failed to insert vectors into collection test_collection
+
+Cleaning up...
+✓ Cleanup completed
+❌ Pipeline Docling-Sentence-Ollama failed: Failed to insert vectors into collection test_collection
+
+=== Test Summary ===
+Total combinations tested: 8
+Successful combinations: 4
+Failed combinations: 4
+
+=== Failed Pipelines ===
+
+Pipeline: Default-Recursive-Ollama
+Components:
+  - Reader: Default
+  - Chunker: Recursive
+  - Embedder: Ollama
+Error: Failed to insert vectors into collection test_collection
+--------------------------------------------------
+
+Pipeline: Default-Sentence-Ollama
+Components:
+  - Reader: Default
+  - Chunker: Sentence
+  - Embedder: Ollama
+Error: Failed to insert vectors into collection test_collection
+--------------------------------------------------
+
+Pipeline: Docling-Recursive-Ollama
+Components:
+  - Reader: Docling
+  - Chunker: Recursive
+  - Embedder: Ollama
+Error: Failed to insert vectors into collection test_collection
+--------------------------------------------------
+
+Pipeline: Docling-Sentence-Ollama
+Components:
+  - Reader: Docling
+  - Chunker: Sentence
+  - Embedder: Ollama
+Error: Failed to insert vectors into collection test_collection
+--------------------------------------------------
+
+Test completed at: 2025-06-07 14:53:47
+Full results saved to: logs/all/full_rag_pipeline_test_results_20250607_145123.txt
+Error details saved to: logs/errors/full_rag_pipeline_errors_20250607_145123.txt
+Generated answers saved to: logs/generated_answers/generated_answers_20250607_145123.txt
