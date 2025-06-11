@@ -1,8 +1,0 @@
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
-Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'

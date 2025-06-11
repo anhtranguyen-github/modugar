@@ -1,1 +1,0 @@
-❌ Pipeline Default-Recursive-Ollama failed: Connection failed: Failed to connect to Weaviate
