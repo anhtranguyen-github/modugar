@@ -21,88 +21,6 @@ from rag_backend.components.managers import (
 
 load_dotenv()
 
-class ClientManager:
-    def __init__(self) -> None:
-        self.clients: dict[str, dict] = {}
-        self.max_time: int = 10
-        self.locks: dict[str, asyncio.Lock] = {}
-
-    def hash_credentials(self, credentials: Credentials) -> str:
-        cred_string = f"{credentials.deployment}:{credentials.url}:{credentials.key}"
-        return hashlib.sha256(cred_string.encode()).hexdigest()
-
-    def get_or_create_lock(self, cred_hash: str) -> asyncio.Lock:
-        if cred_hash not in self.locks:
-            self.locks[cred_hash] = asyncio.Lock()
-        return self.locks[cred_hash]
-
-    def heartbeat(self):
-        msg.info(f"{len(self.clients)} clients connected")
-        for cred_hash, client in self.clients.items():
-            msg.info(f"Client {cred_hash} connected at {client['timestamp']}")
-
-    async def connect(self, client_factory, credentials: Credentials, port: str = "8080") -> Any:
-        """Connect using the provided client factory function."""
-        _credentials = credentials
-
-        if not _credentials.url and not _credentials.key:
-            _credentials.url = os.environ.get("WEAVIATE_URL_VERBA", "")
-            _credentials.key = os.environ.get("WEAVIATE_API_KEY_VERBA", "")
-
-        cred_hash = self.hash_credentials(_credentials)
-
-        lock = self.get_or_create_lock(cred_hash)
-        async with lock:
-            if cred_hash in self.clients:
-                msg.info("Found existing Client")
-                return self.clients[cred_hash]["client"]
-            else:
-                msg.warn("Connecting new Client")
-                try:
-                    client = await client_factory(
-                        store_name=_credentials.deployment,
-                        url=_credentials.url,
-                        api_key=_credentials.key,
-                        port=port
-                    )
-                    if client:
-                        self.clients[cred_hash] = {
-                            "client": client,
-                            "timestamp": datetime.now(),
-                        }
-                        return client
-                    else:
-                        raise Exception("Client not created")
-                except Exception as e:
-                    raise e
-
-    async def disconnect(self, disconnect_func):
-        """Disconnect all clients using the provided disconnect function."""
-        msg.warn("Disconnecting Clients!")
-        for cred_hash, client in self.clients.items():
-            await disconnect_func(client["client"])
-
-    async def clean_up(self, is_ready_func, disconnect_func):
-        """Clean up stale clients using the provided functions."""
-        msg.info("Cleaning Clients Cache")
-        current_time = datetime.now()
-        clients_to_remove = []
-
-        for cred_hash, client_data in self.clients.items():
-            time_difference = current_time - client_data["timestamp"]
-            if time_difference.total_seconds() / 60 > self.max_time:
-                clients_to_remove.append(cred_hash)
-            client = client_data["client"]
-            if not await is_ready_func(client):
-                clients_to_remove.append(cred_hash)
-
-        for cred_hash in clients_to_remove:
-            await disconnect_func(self.clients[cred_hash]["client"])
-            del self.clients[cred_hash]
-            msg.warn(f"Removed client: {cred_hash}")
-
-        msg.info(f"Cleaned up {len(clients_to_remove)} clients")
-        self.heartbeat()
 
 class RAGManager:
     """Manages RAG pipeline components with VectorStoreManager."""
@@ -115,9 +33,10 @@ class RAGManager:
         self.generator_manager = GeneratorManager()
         self.vector_store_manager = VectorStoreManager()
         self.logger = LoggerManager()
-        self.client_manager = ClientManager()
         self.environment_variables = {}
         self.installed_libraries = {}
+        self.active_client = None
+        self.active_store = None
 
         self.verify_installed_libraries()
         self.verify_variables()
@@ -125,111 +44,22 @@ class RAGManager:
     async def connect(self, store_name: str, **kwargs) -> Any:
         """Connect to the vector store."""
         try:
-            credentials = Credentials(
-                deployment=store_name,
-                url=kwargs.get("url", ""),
-                key=kwargs.get("key", "")
-            )
-            port = kwargs.get("port", "8080")
-            
-            # Pass vector store manager's functions to client manager
-            client = await self.client_manager.connect(
-                self.vector_store_manager.initialize_store,
-                credentials,
-                port
-            )
-            if client:
-                return client
+            # Connect to vector store
+            self.active_client = await self.vector_store_manager.connect(store_name, **kwargs)
+            if self.active_client:
+                self.active_store = store_name
+                return self.active_client
             raise Exception(f"Failed to connect to {store_name}")
         except Exception as e:
             raise Exception(f"Connection failed: {str(e)}")
 
     async def disconnect(self) -> bool:
         """Disconnect from the vector store."""
-        await self.client_manager.disconnect(self.vector_store_manager.disconnect)
+        if self.active_client and self.active_store:
+            await self.vector_store_manager.disconnect(self.active_store, self.active_client)
+            self.active_client = None
+            self.active_store = None
         return True
-
-    async def clean_up_clients(self):
-        """Clean up stale clients."""
-        await self.client_manager.clean_up(
-            self.vector_store_manager.is_ready,
-            self.vector_store_manager.disconnect
-        )
-
-    def verify_installed_libraries(self) -> None:
-        """Checks which libraries are installed and fills out the self.installed_libraries dictionary."""
-        reader = [
-            lib
-            for reader in self.reader_manager.readers
-            for lib in self.reader_manager.readers[reader].requires_library
-        ]
-        chunker = [
-            lib
-            for chunker in self.chunker_manager.chunkers
-            for lib in self.chunker_manager.chunkers[chunker].requires_library
-        ]
-        embedder = [
-            lib
-            for embedder in self.embedder_manager.embedders
-            for lib in self.embedder_manager.embedders[embedder].requires_library
-        ]
-        retriever = [
-            lib
-            for retriever in self.retriever_manager.retrievers
-            for lib in self.retriever_manager.retrievers[retriever].requires_library
-        ]
-        generator = [
-            lib
-            for generator in self.generator_manager.generators
-            for lib in self.generator_manager.generators[generator].requires_library
-        ]
-
-        required_libraries = reader + chunker + embedder + retriever + generator
-        unique_libraries = set(required_libraries)
-
-        for lib in unique_libraries:
-            try:
-                importlib.import_module(lib)
-                self.installed_libraries[lib] = True
-            except Exception:
-                self.installed_libraries[lib] = False
-
-    def verify_variables(self) -> None:
-        """Checks which environment variables are installed and fills out the self.environment_variables dictionary."""
-        reader = [
-            lib
-            for reader in self.reader_manager.readers
-            for lib in self.reader_manager.readers[reader].requires_env
-        ]
-        chunker = [
-            lib
-            for chunker in self.chunker_manager.chunkers
-            for lib in self.chunker_manager.chunkers[chunker].requires_env
-        ]
-        embedder = [
-            lib
-            for embedder in self.embedder_manager.embedders
-            for lib in self.embedder_manager.embedders[embedder].requires_env
-        ]
-        retriever = [
-            lib
-            for retriever in self.retriever_manager.retrievers
-            for lib in self.retriever_manager.retrievers[retriever].requires_env
-        ]
-        generator = [
-            lib
-            for generator in self.generator_manager.generators
-            for lib in self.generator_manager.generators[generator].requires_env
-        ]
-
-        required_envs = reader + chunker + embedder + retriever + generator
-        unique_envs = set(required_envs)
-
-        for env in unique_envs:
-            if os.environ.get(env) is not None:
-                self.environment_variables[env] = True
-            else:
-                self.environment_variables[env] = False
 
     async def import_document(
         self,
@@ -252,6 +82,8 @@ class RAGManager:
 
             # Create collection if it doesn't exist
             collection_created = await self.vector_store_manager.create_collection(
+                self.active_store,
+                client,
                 collection_name,
                 vector_size=vector_size
             )
@@ -299,6 +131,8 @@ class RAGManager:
                         })
 
                     vector_ids = await self.vector_store_manager.insert_vectors(
+                        self.active_store,
+                        client,
                         collection_name,
                         vectors,
                         metadata
@@ -359,7 +193,8 @@ class RAGManager:
                 self.embedder_manager.embedders[embedder_name],
                 labels,
                 document_uuids,
-                collection_name  # Pass the collection name to the retriever
+                collection_name,  # Pass the collection name to the retriever
+                self.active_store  # Pass the active store name
             )
 
             return documents, context
@@ -448,4 +283,79 @@ class RAGManager:
             return content_pieces, total_pages
 
         except Exception as e:
-            raise Exception(f"Failed to get document content: {str(e)}") 
+            raise Exception(f"Failed to get document content: {str(e)}")
+
+    def verify_installed_libraries(self) -> None:
+        """Checks which libraries are installed and fills out the self.installed_libraries dictionary."""
+        reader = [
+            lib
+            for reader in self.reader_manager.readers
+            for lib in self.reader_manager.readers[reader].requires_library
+        ]
+        chunker = [
+            lib
+            for chunker in self.chunker_manager.chunkers
+            for lib in self.chunker_manager.chunkers[chunker].requires_library
+        ]
+        embedder = [
+            lib
+            for embedder in self.embedder_manager.embedders
+            for lib in self.embedder_manager.embedders[embedder].requires_library
+        ]
+        retriever = [
+            lib
+            for retriever in self.retriever_manager.retrievers
+            for lib in self.retriever_manager.retrievers[retriever].requires_library
+        ]
+        generator = [
+            lib
+            for generator in self.generator_manager.generators
+            for lib in self.generator_manager.generators[generator].requires_library
+        ]
+
+        required_libraries = reader + chunker + embedder + retriever + generator
+        unique_libraries = set(required_libraries)
+
+        for lib in unique_libraries:
+            try:
+                importlib.import_module(lib)
+                self.installed_libraries[lib] = True
+            except Exception:
+                self.installed_libraries[lib] = False
+
+    def verify_variables(self) -> None:
+        """Checks which environment variables are installed and fills out the self.environment_variables dictionary."""
+        reader = [
+            lib
+            for reader in self.reader_manager.readers
+            for lib in self.reader_manager.readers[reader].requires_env
+        ]
+        chunker = [
+            lib
+            for chunker in self.chunker_manager.chunkers
+            for lib in self.chunker_manager.chunkers[chunker].requires_env
+        ]
+        embedder = [
+            lib
+            for embedder in self.embedder_manager.embedders
+            for lib in self.embedder_manager.embedders[embedder].requires_env
+        ]
+        retriever = [
+            lib
+            for retriever in self.retriever_manager.retrievers
+            for lib in self.retriever_manager.retrievers[retriever].requires_env
+        ]
+        generator = [
+            lib
+            for generator in self.generator_manager.generators
+            for lib in self.generator_manager.generators[generator].requires_env
+        ]
+
+        required_envs = reader + chunker + embedder + retriever + generator
+        unique_envs = set(required_envs)
+
+        for env in unique_envs:
+            if os.environ.get(env) is not None:
+                self.environment_variables[env] = True
+            else:
+                self.environment_variables[env] = False 

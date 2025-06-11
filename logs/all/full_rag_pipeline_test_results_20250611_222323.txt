@@ -1,0 +1,89 @@
+
+=== Testing Full RAG Pipeline with All Component Combinations ===
+
+Test started at: 2025-06-11 22:23:23
+
+
+Testing 1 combinations...
+
+Testing combination 1/1
+Pipeline: Default-Recursive-Ollama
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: Ollama
+==================================================
+
+Checking Ollama connection...
+✓ Ollama connection successful
+Using vector dimension: 768
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the RAG pipeline...
+
+Test Case 1:
+
+Question: What are the main components of the RAG pipeline?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Test Case 2:
+
+Question: How does the chunking process work?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Test Case 3:
+
+Question: What is the role of the embedder in the pipeline?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Test Case 4:
+
+Question: How does the vector store contribute to the RAG system?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Test Case 5:
+
+Question: What is the purpose of the retriever component?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Test Case 6:
+
+Question: How does the generator use the retrieved context?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Test Case 7:
+
+Question: What are the different types of chunkers available?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Test Case 8:
+
+Question: What embedding models are supported in the pipeline?
+Error: Retrieval failed: VectorStoreManager.search_vectors() missing 2 required positional arguments: 'store_name' and 'client'
+--------------------------------------------------------------------------------
+
+Cleaning up...
+✓ Cleanup completed
+✓ Pipeline Default-Recursive-Ollama completed successfully
+
+=== Test Summary ===
+Total combinations tested: 1
+Successful combinations: 1
+Failed combinations: 0
+
+Test completed at: 2025-06-11 22:23:31
+Full results saved to: logs/all/full_rag_pipeline_test_results_20250611_222323.txt
+Error details saved to: logs/errors/full_rag_pipeline_errors_20250611_222323.txt
+Generated answers saved to: logs/generated_answers/generated_answers_20250611_222323.txt

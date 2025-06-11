@@ -1,0 +1,250 @@
+
+=== Testing Full RAG Pipeline with All Component Combinations ===
+
+Test started at: 2025-06-11 22:35:57
+
+
+Testing 1 combinations...
+
+Testing combination 1/1
+Pipeline: Default-Recursive-Ollama
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: Ollama
+==================================================
+
+Checking Ollama connection...
+✓ Ollama connection successful
+Using vector dimension: 768
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the RAG pipeline...
+
+Test Case 1:
+
+Question: What are the main components of the RAG pipeline?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.73
+# Test Document
+
+This is a test document for the RAG pipeline.
+Chunk: 2
+High Relevancy: 0.72
+## Section 1: Introduction
+This is the first section with some important information about the RAG pipeline.
+- Point 1: Document Reading
+- Point 2: Text Chunking
+- Point 3: Vector Embedding
+Chunk: 3
+High Relevancy: 0.82
+## Section 2: Technical Details
+Here we have some technical details about the implementation.
+The RAG pipeline consists of several key components:
+Chunk: 4
+High Relevancy: 0.68
+1. Document Reader: Processes input files and extracts text
+2. Chunker: Splits text into manageable chunks
+3. Embedder: Converts text chunks into vector embeddings
+Chunk: 5
+High Relevancy: 0.68
+4. Vector Store: Stores and retrieves vector embeddings
+5. Retriever: Finds relevant chunks based on queries
+6. Generator: Generates responses using retrieved context
+
+
+
+
+Generating answer...
+Answer: <think>
+Answer: 
+
+Answer: Okay
+Answer: ,
+Answer:  let
+Answer: 's
+Answer:  see
+Answer: .
+Answer:  The
+Answer:  user
+Answer:  is
+Answer:  asking
+Answer:  about
+Answer:  the
+Answer:  main
+Answer:  components
+Answer:  of
+Answer:  the
+Answer:  R
+Answer: AG
+Answer:  pipeline
+Answer: .
+Answer:  I
+Answer:  need
+Answer:  to
+Answer:  look
+Answer:  through
+Answer:  the
+Answer:  provided
+Answer:  context
+Answer:  to
+Answer:  find
+Answer:  the
+Answer:  relevant
+Answer:  information
+Answer: .
+
+
+Answer: Looking
+Answer:  at
+Answer:  the
+Answer:  context
+Answer: ,
+Answer:  there
+Answer: 's
+Answer:  a
+Answer:  chunk
+Answer:  labeled
+Answer:  "
+Answer: Chunk
+Answer: :
+Answer:  
+Answer: 4
+Answer: "
+Answer:  with
+Answer:  High
+Answer:  Re
+Answer: lev
+Answer: ancy
+Answer:  
+Answer: 0
+Answer: .
+Answer: 6
+Answer: 8
+Answer: .
+Answer:  It
+Answer:  lists
+Answer:  the
+Answer:  components
+Answer:  as
+Answer: :
+Answer:  
+Answer: 1
+Answer: .
+Answer:  Document
+Answer:  Reader
+Answer: :
+Answer:  Processes
+Answer:  input
+Answer:  files
+Answer:  and
+Answer:  extracts
+Answer:  text
+Answer: ,
+Answer:  
+Answer: 2
+Answer: .
+Answer:  Chunk
+Answer: er
+Answer: :
+Answer:  S
+Answer: plits
+Answer:  text
+Answer:  into
+Answer:  manageable
+Answer:  chunks
+Answer: ,
+Answer:  
+Answer: 3
+Answer: .
+Answer:  Embed
+Answer: der
+Answer: :
+Answer:  Converts
+Answer:  text
+Answer:  chunks
+Answer:  into
+Answer:  vector
+Answer:  embeddings
+Answer: .
+Answer:  Then
+Answer:  there
+Answer: 's
+Answer:  another
+Answer:  chunk
+Answer:  labeled
+Answer:  "
+Answer: Chunk
+Answer: :
+Answer:  
+Answer: 5
+Answer: "
+Answer:  with
+Answer:  High
+Answer:  Re
+Answer: lev
+Answer: ancy
+Answer:  
+Answer: 0
+Answer: .
+Answer: 6
+Answer: 8
+Answer: ,
+Answer:  which
+Answer:  lists
+Answer:  the
+Answer:  components
+Answer:  
+Answer: 4
+Answer: .
+Answer:  Vector
+Answer:  Store
+Answer: :
+Answer:  Stores
+Answer:  and
+Answer:  retrieves
+Answer:  vector
+Answer:  embeddings
+Answer: ,
+Answer:  
+Answer: 5
+Answer: .
+Answer:  Ret
+Answer: ri
+Answer: ever
+Answer: :
+Answer:  Finds
+Answer:  relevant
+Answer:  chunks
+Answer:  based
+Answer:  on
+Answer:  queries
+Answer: ,
+Answer:  
+Answer: 6
+Answer: .
+Answer:  Generator
+Answer: :
+Answer:  Generates
+Answer:  responses
+Answer:  using
+Answer:  retrieved
+Answer:  context
+Answer: .
+
+
+Answer: So
+Answer:  the
+Answer:  main
+Answer:  components
+
+Cleaning up...
+✓ Cleanup completed

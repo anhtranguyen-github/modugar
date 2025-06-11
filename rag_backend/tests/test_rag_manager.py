@@ -6,6 +6,7 @@ from datetime import datetime
 from rag_backend.rag_manager import RAGManager
 from rag_backend.server.types import FileConfig
 from rag_backend.server.helpers import LoggerManager
+from rag_backend.components.embedding.OpenAIEmbedder import OpenAIEmbedder
 
 def read_file_as_base64(path):
     """Read a file as bytes and return a base64-encoded string."""
@@ -58,7 +59,7 @@ def create_file_config(
     file_content = read_file_as_base64(test_file)
     
     # Set vector dimensions based on embedder
-    vector_size = 768 if embedder_name == "Ollama" else 384  # Ollama uses 768, SentenceTransformers uses 384
+    vector_size = 768 if embedder_name == "Ollama" else (1536 if embedder_name == "OpenAI" else 384)  # Ollama uses 768, OpenAI uses 1536, SentenceTransformers uses 384
     
     config = {
         "Reader": {
@@ -208,6 +209,29 @@ def create_file_config(
                             "type": "number",
                             "value": 768,
                             "description": "Vector dimension for Ollama",
+                            "values": []
+                        }
+                    },
+                    "max_batch_size": 32
+                },
+                "OpenAI": {
+                    "name": "OpenAI",
+                    "type": "Embedder",
+                    "description": "Test embedder using OpenAI",
+                    "library": ["aiohttp"],
+                    "available": True,
+                    "variables": [],
+                    "config": {
+                        "Model": {
+                            "type": "dropdown",
+                            "description": "Select an OpenAI Embedding Model",
+                            "values": ["text-embedding-3-small"],
+                            "value": "text-embedding-3-small"
+                        },
+                        "vector_dimension": {
+                            "type": "number",
+                            "value": 1536,
+                            "description": "Vector dimension for OpenAI embeddings",
                             "values": []
                         }
                     },
@@ -454,39 +478,43 @@ async def test_pipeline(reader_name: str, chunker_name: str, embedder_name: str,
             reader_name,
             chunker_name,
             embedder_name,
-            "Weaviate",
+            "Qdrant",
             "Advanced",
             "Ollama"
         )
         
-        # 1. Connect to Weaviate
-        log_func("1. Connecting to Weaviate...")
+        # Get vector size from embedder config
+        vector_dimension = file_config.rag_config["Embedder"].components[embedder_name].config["vector_dimension"].value
+        log_func(f"Using vector dimension: {vector_dimension}")
+        
+        # 1. Connect to Qdrant
+        log_func("1. Connecting to Qdrant...")
         client = await rag_manager.connect(
-            "Weaviate",
+            "Qdrant",
             url="localhost",
-            port=8080,
+            port=6333,
+            key="",  # Empty key for local connection
             config={
                 "Host Config": {"value": "local"},
                 "Collection Name": {"value": "test_collection"},
-                "Vector Size": {"value": str(768 if embedder_name == "Ollama" else 384)},
+                "Vector Size": {"value": str(vector_dimension)},  # Use the actual vector dimension from embedder
                 "Distance": {"value": "Cosine"}
             }
         )
         if not client:
-            raise Exception("Failed to connect to Weaviate")
-        log_func("✓ Successfully connected to Weaviate\n")
+            raise Exception("Failed to connect to Qdrant")
+        log_func("✓ Successfully connected to Qdrant\n")
 
         # 2. Import document
         log_func("2. Importing document...")
         collection_name = "test_collection"  # Use consistent collection name
         
-        # Get vector size from embedder config
-        vector_dimension = file_config.rag_config["Embedder"].components[embedder_name].config["vector_dimension"].value
-        
-        # Create collection
+        # Create collection with the correct vector size
         collection_created = await rag_manager.vector_store_manager.create_collection(
+            "Qdrant",  # store_name
+            client,    # client
             collection_name,
-            vector_size=int(vector_dimension)
+            vector_size=int(vector_dimension)  # Use the actual vector dimension
         )
         if not collection_created:
             raise Exception(f"Failed to create collection {collection_name}")
@@ -581,7 +609,7 @@ async def main():
         # Component options
         # readers = ["Default", "Docling"]
         # chunkers = ["Recursive", "Sentence"]
-        # embedders = ["SentenceTransformers", "Ollama"]
+        # embedders = ["SentenceTransformers", "Ollama", "OpenAI"]
         
         readers = ["Default"]
         chunkers = ["Recursive"]

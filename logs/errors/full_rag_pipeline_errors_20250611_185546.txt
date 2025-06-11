@@ -1,0 +1,1 @@
+❌ Pipeline Default-Recursive-OpenAI failed: Connection failed: WeaviateStore.connect() got an unexpected keyword argument 'api_key'
