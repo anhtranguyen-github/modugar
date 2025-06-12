@@ -210,20 +210,34 @@ class RAGManager:
         conversation: List[dict] = None
     ):
         """Generate an answer using the context and conversation history."""
+        generator = None
         try:
             # Get the generator configuration
             generator_name = file_config.rag_config["Generator"].selected
             generator_config = file_config.rag_config["Generator"].components[generator_name].config
             
-            async for result in self.generator_manager.generate_stream(
+            # Get the generator instance
+            generator = self.generator_manager.generators[generator_name]
+            
+            # Generate the answer
+            async for result in generator.generate_stream(
                 file_config.rag_config,
                 query,
                 context,
                 conversation or []
             ):
                 yield result
+                
         except Exception as e:
             raise Exception(f"Generation failed: {str(e)}")
+        finally:
+            # Ensure any cleanup is performed
+            if generator and hasattr(generator, 'cleanup'):
+                try:
+                    await generator.cleanup()
+                except Exception as e:
+                    # Log cleanup error but don't raise it
+                    print(f"Warning: Error during generator cleanup: {str(e)}")
 
     async def get_document_content(
         self,

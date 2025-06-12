@@ -1,0 +1,520 @@
+
+=== Testing Full RAG Pipeline with All Component Combinations ===
+
+Test started at: 2025-06-11 23:26:55
+
+
+Testing 1 combinations...
+
+Testing combination 1/1
+Pipeline: Default-Recursive-OpenAI-OpenAI
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: OpenAI
+Generator: OpenAI
+==================================================
+
+Using vector dimension: 1536
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the Throne of the Verdant Flame...
+
+Test Case 1:
+
+Question: What is the Throne of the Verdant Flame?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.44
+# Throne of the Verdant Flame
+Chunk: 2
+High Relevancy: 0.54
+The Throne of the Verdant Flame is an ancient artifact of immense power and significance, crafted during the Age of Eternal Spring. This magnificent seat of power is said to be the source of all
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.47
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.56
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+Chunk: 26
+High Relevancy: 0.46
+Many legends surround the throne, including:
+- It is said to have been grown from a seed planted by the first tree
+- Some believe it contains the soul of the first Nature Guardian
+Chunk: 27
+- There are tales of it being able to communicate with the world tree
+- It is rumored to hold the secret to eternal life, though this has never been proven
+Chunk: 28
+## Current Guardian
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Test Case 2:
+
+Question: What are the key features or characteristics of the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.43
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.38
+to the throne's occupant.
+Chunk: 8
+High Relevancy: 0.41
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 10
+2. **Seasonal Control**: The occupant can manipulate the seasons in the surrounding area, though this power is limited by the natural balance of the world.
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.40
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.38
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Test Case 3:
+
+Question: What is the significance or importance of the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+# Throne of the Verdant Flame
+Chunk: 2
+High Relevancy: 0.36
+The Throne of the Verdant Flame is an ancient artifact of immense power and significance, crafted during the Age of Eternal Spring. This magnificent seat of power is said to be the source of all
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.37
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.39
+to the throne's occupant.
+Chunk: 8
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.45
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.39
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Test Case 4:
+
+Question: What materials or elements is the throne made of?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 2
+High Relevancy: 0.37
+The Throne of the Verdant Flame is an ancient artifact of immense power and significance, crafted during the Age of Eternal Spring. This magnificent seat of power is said to be the source of all
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.49
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 22
+High Relevancy: 0.37
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.36
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 30
+High Relevancy: 0.36
+to the natural laws that govern the throne's use.
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Test Case 5:
+
+Question: What is the history or origin of the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.36
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.36
+to the throne's occupant.
+Chunk: 8
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 12
+4. **Healing Aura**: A gentle healing energy emanates from the throne, promoting growth and recovery in nearby living things.
+Chunk: 13
+## Historical Significance
+Chunk: 14
+High Relevancy: 0.36
+The throne was created by the first Nature Guardian, a powerful druid who sought to maintain balance between civilization and the natural world. It has been passed down through generations of
+Chunk: 15
+generations of guardians, each adding their own magical enhancements and protections.
+Chunk: 16
+## Current Status
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.35
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+Chunk: 26
+High Relevancy: 0.37
+Many legends surround the throne, including:
+- It is said to have been grown from a seed planted by the first tree
+- Some believe it contains the soul of the first Nature Guardian
+Chunk: 27
+- There are tales of it being able to communicate with the world tree
+- It is rumored to hold the secret to eternal life, though this has never been proven
+Chunk: 28
+## Current Guardian
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Test Case 6:
+
+Question: What powers or abilities are associated with the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 8
+High Relevancy: 0.45
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 10
+2. **Seasonal Control**: The occupant can manipulate the seasons in the surrounding area, though this power is limited by the natural balance of the world.
+Chunk: 12
+4. **Healing Aura**: A gentle healing energy emanates from the throne, promoting growth and recovery in nearby living things.
+Chunk: 13
+## Historical Significance
+Chunk: 14
+High Relevancy: 0.41
+The throne was created by the first Nature Guardian, a powerful druid who sought to maintain balance between civilization and the natural world. It has been passed down through generations of
+Chunk: 15
+generations of guardians, each adding their own magical enhancements and protections.
+Chunk: 16
+## Current Status
+Chunk: 18
+nature can approach the throne without being repelled by its protective magic.
+Chunk: 19
+## Access and Usage
+Chunk: 20
+High Relevancy: 0.46
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.47
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.42
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Test Case 7:
+
+Question: Who can use or access the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.37
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.44
+to the throne's occupant.
+Chunk: 8
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 18
+nature can approach the throne without being repelled by its protective magic.
+Chunk: 19
+## Access and Usage
+Chunk: 20
+High Relevancy: 0.37
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.38
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 28
+## Current Guardian
+Chunk: 29
+The current guardian of the throne is High Druid Elara Greenleaf, who has maintained the position for over three centuries. She is known for her wisdom and her strict adherence to the natural laws
+Chunk: 30
+High Relevancy: 0.39
+to the natural laws that govern the throne's use.
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Test Case 8:
+
+Question: What are the main themes or symbolism in the throne's description?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.42
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.51
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.48
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+Chunk: 26
+High Relevancy: 0.37
+Many legends surround the throne, including:
+- It is said to have been grown from a seed planted by the first tree
+- Some believe it contains the soul of the first Nature Guardian
+Chunk: 30
+High Relevancy: 0.38
+to the natural laws that govern the throne's use.
+
+
+
+
+Generating answer...
+Error during generation: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+Error: Generation failed: OpenAI generation failed: 'NoneType' object has no attribute 'value'
+--------------------------------------------------------------------------------
+
+Cleaning up...
+✓ Cleanup completed
+✓ Pipeline Default-Recursive-OpenAI-OpenAI completed successfully
+
+=== Test Summary ===
+Total combinations tested: 1
+Successful combinations: 1
+Failed combinations: 0
+
+Test completed at: 2025-06-11 23:27:08
+Full results saved to: logs/all/full_rag_pipeline_test_results_20250611_232655.txt
+Error details saved to: logs/errors/full_rag_pipeline_errors_20250611_232655.txt
+Generated answers saved to: logs/generated_answers/generated_answers_20250611_232655.txt

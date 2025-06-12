@@ -1,0 +1,52 @@
+
+=== Testing Full RAG Pipeline with All Component Combinations ===
+
+Test started at: 2025-06-11 23:34:13
+
+
+Testing 1 combinations...
+
+Testing combination 1/1
+Pipeline: Default-Recursive-Ollama-Ollama
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: Ollama
+Generator: Ollama
+==================================================
+
+Checking Ollama connection...
+✓ Ollama connection successful
+Using vector dimension: 768
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+
+❌ Error: Failed to insert vectors into collection test_collection
+
+Cleaning up...
+✓ Cleanup completed
+❌ Pipeline Default-Recursive-Ollama-Ollama failed: Failed to insert vectors into collection test_collection
+
+=== Test Summary ===
+Total combinations tested: 1
+Successful combinations: 0
+Failed combinations: 1
+
+=== Failed Pipelines ===
+
+Pipeline: Default-Recursive-Ollama-Ollama
+Components:
+  - Reader: Default
+  - Chunker: Recursive
+  - Embedder: Ollama
+  - Generator: Ollama
+Error: Failed to insert vectors into collection test_collection
+--------------------------------------------------
+
+Test completed at: 2025-06-11 23:34:18
+Full results saved to: logs/all/full_rag_pipeline_test_results_20250611_233413.txt
+Error details saved to: logs/errors/full_rag_pipeline_errors_20250611_233413.txt
+Generated answers saved to: logs/generated_answers/generated_answers_20250611_233413.txt

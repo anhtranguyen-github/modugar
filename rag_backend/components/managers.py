@@ -57,6 +57,7 @@ from rag_backend.components.retriever.WindowRetriever import WindowRetriever
 
 # Import Generators
 from rag_backend.components.generation.OllamaGenerator import OllamaGenerator
+from rag_backend.components.generation.OpenAIGenerator import OpenAIGenerator
 
 # Import Vector Stores
 from rag_backend.components.vector_store.WeaviateStore import WeaviateStore
@@ -64,6 +65,7 @@ from rag_backend.components.vector_store.QdrantStore import QdrantStore
 
 try:
     import tiktoken
+
     TIKTOKEN_AVAILABLE = True
 except ImportError:
     msg.warn("tiktoken not installed, token counting will be disabled.")
@@ -96,9 +98,7 @@ embedders = [
 
 retrievers = [WindowRetriever()]
 
-generators = [
-    OllamaGenerator(),
-]
+generators = [OllamaGenerator(), OpenAIGenerator()]
 
 vector_stores = [
     WeaviateStore(),
@@ -106,6 +106,8 @@ vector_stores = [
 ]
 
 ### ----------------------- ###
+
+
 class ReaderManager:
     def __init__(self):
         self.readers: dict[str, Reader] = {reader.name: reader for reader in readers}
@@ -356,11 +358,11 @@ class RetrieverManager:
                 .value
             )
             config = rag_config["Retriever"].components[retriever].config
-            
+
             # Set vector store manager in retriever
             retriever_instance = self.retrievers[retriever]
             retriever_instance._vector_store_manager = self.vector_store_manager
-            
+
             documents, context = await retriever_instance.retrieve(
                 client,
                 query,
@@ -451,7 +453,9 @@ class GeneratorManager:
 
 class VectorStoreManager:
     def __init__(self):
-        self.stores: Dict[str, VectorStore] = {store.name: store for store in vector_stores}
+        self.stores: Dict[str, VectorStore] = {
+            store.name: store for store in vector_stores
+        }
 
     async def connect(self, store_name: str, **kwargs) -> Any:
         """Connect to a vector store
@@ -462,7 +466,7 @@ class VectorStoreManager:
         try:
             if store_name not in self.stores:
                 raise Exception(f"Vector store {store_name} not found")
-            
+
             client = await self.stores[store_name].connect(**kwargs)
             if client:
                 return client
@@ -481,7 +485,9 @@ class VectorStoreManager:
                 raise Exception(f"Vector store {store_name} not found")
             return await self.stores[store_name].disconnect(client)
         except Exception as e:
-            raise Exception(f"Failed to disconnect from vector store {store_name}: {str(e)}")
+            raise Exception(
+                f"Failed to disconnect from vector store {store_name}: {str(e)}"
+            )
 
     async def is_ready(self, store_name: str, client: Any) -> bool:
         """Check if a vector store is ready
@@ -494,9 +500,13 @@ class VectorStoreManager:
                 raise Exception(f"Vector store {store_name} not found")
             return await self.stores[store_name].is_ready(client)
         except Exception as e:
-            raise Exception(f"Failed to check vector store {store_name} readiness: {str(e)}")
+            raise Exception(
+                f"Failed to check vector store {store_name} readiness: {str(e)}"
+            )
 
-    async def create_collection(self, store_name: str, client: Any, collection_name: str, **kwargs) -> bool:
+    async def create_collection(
+        self, store_name: str, client: Any, collection_name: str, **kwargs
+    ) -> bool:
         """Create a new collection in a vector store
         @parameter: store_name : str - Name of the vector store
         @parameter: client : Any - Vector store client instance
@@ -507,11 +517,17 @@ class VectorStoreManager:
         try:
             if store_name not in self.stores:
                 raise Exception(f"Vector store {store_name} not found")
-            return await self.stores[store_name].create_collection(client, collection_name, **kwargs)
+            return await self.stores[store_name].create_collection(
+                client, collection_name, **kwargs
+            )
         except Exception as e:
-            raise Exception(f"Failed to create collection in vector store {store_name}: {str(e)}")
+            raise Exception(
+                f"Failed to create collection in vector store {store_name}: {str(e)}"
+            )
 
-    async def delete_collection(self, store_name: str, client: Any, collection_name: str) -> bool:
+    async def delete_collection(
+        self, store_name: str, client: Any, collection_name: str
+    ) -> bool:
         """Delete a collection from a vector store
         @parameter: store_name : str - Name of the vector store
         @parameter: client : Any - Vector store client instance
@@ -521,11 +537,23 @@ class VectorStoreManager:
         try:
             if store_name not in self.stores:
                 raise Exception(f"Vector store {store_name} not found")
-            return await self.stores[store_name].delete_collection(client, collection_name)
+            return await self.stores[store_name].delete_collection(
+                client, collection_name
+            )
         except Exception as e:
-            raise Exception(f"Failed to delete collection from vector store {store_name}: {str(e)}")
+            raise Exception(
+                f"Failed to delete collection from vector store {store_name}: {str(e)}"
+            )
 
-    async def insert_vectors(self, store_name: str, client: Any, collection_name: str, vectors: list[list[float]], metadata: list[dict], **kwargs) -> list[str]:
+    async def insert_vectors(
+        self,
+        store_name: str,
+        client: Any,
+        collection_name: str,
+        vectors: list[list[float]],
+        metadata: list[dict],
+        **kwargs,
+    ) -> list[str]:
         """Insert vectors into a vector store
         @parameter: store_name : str - Name of the vector store
         @parameter: client : Any - Vector store client instance
@@ -538,11 +566,23 @@ class VectorStoreManager:
         try:
             if store_name not in self.stores:
                 raise Exception(f"Vector store {store_name} not found")
-            return await self.stores[store_name].insert_vectors(client, collection_name, vectors, metadata, **kwargs)
+            return await self.stores[store_name].insert_vectors(
+                client, collection_name, vectors, metadata, **kwargs
+            )
         except Exception as e:
-            raise Exception(f"Failed to insert vectors into vector store {store_name}: {str(e)}")
+            raise Exception(
+                f"Failed to insert vectors into vector store {store_name}: {str(e)}"
+            )
 
-    async def search_vectors(self, store_name: str, client: Any, collection_name: str, query_vector: list[float], limit: int, **kwargs) -> list[dict]:
+    async def search_vectors(
+        self,
+        store_name: str,
+        client: Any,
+        collection_name: str,
+        query_vector: list[float],
+        limit: int,
+        **kwargs,
+    ) -> list[dict]:
         """Search for similar vectors in a vector store
         @parameter: store_name : str - Name of the vector store
         @parameter: client : Any - Vector store client instance
@@ -555,11 +595,17 @@ class VectorStoreManager:
         try:
             if store_name not in self.stores:
                 raise Exception(f"Vector store {store_name} not found")
-            return await self.stores[store_name].search_vectors(client, collection_name, query_vector, limit, **kwargs)
+            return await self.stores[store_name].search_vectors(
+                client, collection_name, query_vector, limit, **kwargs
+            )
         except Exception as e:
-            raise Exception(f"Failed to search vectors in vector store {store_name}: {str(e)}")
+            raise Exception(
+                f"Failed to search vectors in vector store {store_name}: {str(e)}"
+            )
 
-    async def delete_vectors(self, store_name: str, client: Any, collection_name: str, vector_ids: list[str]) -> bool:
+    async def delete_vectors(
+        self, store_name: str, client: Any, collection_name: str, vector_ids: list[str]
+    ) -> bool:
         """Delete vectors from a vector store
         @parameter: store_name : str - Name of the vector store
         @parameter: client : Any - Vector store client instance
@@ -570,11 +616,17 @@ class VectorStoreManager:
         try:
             if store_name not in self.stores:
                 raise Exception(f"Vector store {store_name} not found")
-            return await self.stores[store_name].delete_vectors(client, collection_name, vector_ids)
+            return await self.stores[store_name].delete_vectors(
+                client, collection_name, vector_ids
+            )
         except Exception as e:
-            raise Exception(f"Failed to delete vectors from vector store {store_name}: {str(e)}")
+            raise Exception(
+                f"Failed to delete vectors from vector store {store_name}: {str(e)}"
+            )
 
-    async def get_collection_info(self, store_name: str, client: Any, collection_name: str) -> dict:
+    async def get_collection_info(
+        self, store_name: str, client: Any, collection_name: str
+    ) -> dict:
         """Get information about a collection in a vector store
         @parameter: store_name : str - Name of the vector store
         @parameter: client : Any - Vector store client instance
@@ -584,7 +636,10 @@ class VectorStoreManager:
         try:
             if store_name not in self.stores:
                 raise Exception(f"Vector store {store_name} not found")
-            return await self.stores[store_name].get_collection_info(client, collection_name)
+            return await self.stores[store_name].get_collection_info(
+                client, collection_name
+            )
         except Exception as e:
-            raise Exception(f"Failed to get collection info from vector store {store_name}: {str(e)}")
-
+            raise Exception(
+                f"Failed to get collection info from vector store {store_name}: {str(e)}"
+            )

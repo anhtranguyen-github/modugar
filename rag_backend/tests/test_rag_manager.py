@@ -14,36 +14,10 @@ def read_file_as_base64(path):
         return base64.b64encode(f.read()).decode('utf-8')
 
 def create_test_file():
-    """Create a test file with sample content."""
-    test_dir = Path("data/test")
-    test_dir.mkdir(parents=True, exist_ok=True)
-    
-    test_file = test_dir / "test_document.md"
-    test_content = """# Test Document
-
-This is a test document for the RAG pipeline.
-
-## Section 1: Introduction
-This is the first section with some important information about the RAG pipeline.
-- Point 1: Document Reading
-- Point 2: Text Chunking
-- Point 3: Vector Embedding
-
-## Section 2: Technical Details
-Here we have some technical details about the implementation.
-The RAG pipeline consists of several key components:
-
-1. Document Reader: Processes input files and extracts text
-2. Chunker: Splits text into manageable chunks
-3. Embedder: Converts text chunks into vector embeddings
-4. Vector Store: Stores and retrieves vector embeddings
-5. Retriever: Finds relevant chunks based on queries
-6. Generator: Generates responses using retrieved context
-"""
-    
-    with open(test_file, "w", encoding="utf-8") as f:
-        f.write(test_content)
-    
+    """Use Throne of the Verdant Flame.md as the test file."""
+    test_file = Path("data/Throne of the Verdant Flame.md")
+    if not test_file.exists():
+        raise Exception(f"Test file not found: {test_file}")
     return test_file
 
 def create_file_config(
@@ -381,6 +355,28 @@ def create_file_config(
                             "value": "You are a helpful assistant that provides accurate and detailed answers about the RAG pipeline. Use the provided context to answer questions about the implementation, components, and functionality."
                         }
                     }
+                },
+                "OpenAI": {
+                    "name": "OpenAI",
+                    "type": "Generator",
+                    "description": "Generate answers using OpenAI",
+                    "library": ["httpx"],
+                    "available": True,
+                    "variables": ["OPENAI_API_KEY"],
+                    "config": {
+                        "Model": {
+                            "type": "dropdown",
+                            "description": "Select an OpenAI model",
+                            "values": ["gpt-3.5-turbo", "gpt-4"],
+                            "value": "gpt-3.5-turbo"
+                        },
+                        "System Message": {
+                            "type": "text",
+                            "description": "System message for the model",
+                            "values": [],
+                            "value": "You are a helpful assistant that provides accurate and detailed answers about the RAG pipeline. Use the provided context to answer questions about the implementation, components, and functionality."
+                        }
+                    }
                 }
             }
         }
@@ -435,32 +431,45 @@ async def test_qa(rag_manager, client, file_config, question, log_func):
         # Generate answer
         log_func("\nGenerating answer...")
         answer = ""
-        async for response in rag_manager.generate_answer(question, file_config, context):
-            if isinstance(response, dict):
-                if response.get("message"):
-                    answer += response["message"]
-                    log_func(f"Answer: {response['message']}", is_answer=True)
-                if response.get("finish_reason") == "stop":
+        try:
+            # Create a list to store all responses
+            responses = []
+            async for response in rag_manager.generate_answer(question, file_config, context):
+                responses.append(response)
+                if isinstance(response, dict):
+                    if response.get("message"):
+                        answer += response["message"]
+                        log_func(f"Answer: {response['message']}", is_answer=True)
+                    if response.get("finish_reason") == "stop":
+                        break
+                elif isinstance(response, str):
+                    answer += response
+                    log_func(f"Answer: {response}", is_answer=True)
+        except Exception as e:
+            log_func(f"Error during generation: {str(e)}", is_error=True)
+            raise
+        finally:
+            # Ensure we've processed all responses
+            for response in responses:
+                if isinstance(response, dict) and response.get("finish_reason") == "stop":
                     break
-            elif isinstance(response, str):
-                answer += response
-                log_func(f"Answer: {response}", is_answer=True)
                 
     except Exception as e:
         log_func(f"Error: {str(e)}", is_error=True)
     
     log_func("-" * 80)
 
-async def test_pipeline(reader_name: str, chunker_name: str, embedder_name: str, log_func):
+async def test_pipeline(reader_name: str, chunker_name: str, embedder_name: str, generator_name: str, log_func):
     """Test a specific pipeline configuration"""
     log_func(f"\n=== Testing Pipeline Configuration ===")
     log_func(f"Reader: {reader_name}")
     log_func(f"Chunker: {chunker_name}")
     log_func(f"Embedder: {embedder_name}")
+    log_func(f"Generator: {generator_name}")
     log_func("=" * 50 + "\n")
     
-    # Check Ollama connection if using Ollama embedder
-    if embedder_name == "Ollama":
+    # Check Ollama connection if using Ollama generator
+    if generator_name == "Ollama":
         log_func("Checking Ollama connection...")
         if not await check_ollama_connection():
             raise Exception("Ollama is not running or not accessible at localhost:11434. Please start Ollama and try again.")
@@ -480,7 +489,7 @@ async def test_pipeline(reader_name: str, chunker_name: str, embedder_name: str,
             embedder_name,
             "Qdrant",
             "Advanced",
-            "Ollama"
+            generator_name
         )
         
         # Get vector size from embedder config
@@ -528,17 +537,17 @@ async def test_pipeline(reader_name: str, chunker_name: str, embedder_name: str,
         log_func("✓ Document imported successfully\n")
 
         # 3. Test questions
-        log_func("3. Testing questions about the RAG pipeline...")
+        log_func("3. Testing questions about the Throne of the Verdant Flame...")
         
         test_questions = [
-            "What are the main components of the RAG pipeline?",
-            "How does the chunking process work?",
-            "What is the role of the embedder in the pipeline?",
-            "How does the vector store contribute to the RAG system?",
-            "What is the purpose of the retriever component?",
-            "How does the generator use the retrieved context?",
-            "What are the different types of chunkers available?",
-            "What embedding models are supported in the pipeline?"
+            "What is the Throne of the Verdant Flame?",
+            "What are the key features or characteristics of the throne?",
+            "What is the significance or importance of the throne?",
+            "What materials or elements is the throne made of?",
+            "What is the history or origin of the throne?",
+            "What powers or abilities are associated with the throne?",
+            "Who can use or access the throne?",
+            "What are the main themes or symbolism in the throne's description?"
         ]
 
         for i, question in enumerate(test_questions, 1):
@@ -562,8 +571,9 @@ async def test_pipeline(reader_name: str, chunker_name: str, embedder_name: str,
                 await rag_manager.disconnect()
             except Exception as e:
                 log_func(f"Warning: Error during disconnect: {str(e)}")
-        if test_file and test_file.exists():
-            test_file.unlink()
+        # Don't delete the test file since we want to keep it
+        # if test_file and test_file.exists():
+        #     test_file.unlink()
         log_func("✓ Cleanup completed")
 
 async def main():
@@ -613,10 +623,11 @@ async def main():
         
         readers = ["Default"]
         chunkers = ["Recursive"]
-        embedders = ["Ollama"]
+        embedders = ["Ollama"]  # Using OpenAI embedder
+        generators = ["Ollama"]  # Test both generators
 
         # Test all combinations
-        total_combinations = len(readers) * len(chunkers) * len(embedders)
+        total_combinations = len(readers) * len(chunkers) * len(embedders) * len(generators)
         current_combination = 0
         successful_combinations = []
         failed_combinations = []
@@ -626,27 +637,29 @@ async def main():
         for reader in readers:
             for chunker in chunkers:
                 for embedder in embedders:
-                    current_combination += 1
-                    pipeline_name = f"{reader}-{chunker}-{embedder}"
-                    log(f"\nTesting combination {current_combination}/{total_combinations}")
-                    log(f"Pipeline: {pipeline_name}")
+                    for generator in generators:
+                        current_combination += 1
+                        pipeline_name = f"{reader}-{chunker}-{embedder}-{generator}"
+                        log(f"\nTesting combination {current_combination}/{total_combinations}")
+                        log(f"Pipeline: {pipeline_name}")
 
-                    try:
-                        await test_pipeline(reader, chunker, embedder, log)
-                        successful_combinations.append(pipeline_name)
-                        log(f"✓ Pipeline {pipeline_name} completed successfully")
-                    except Exception as e:
-                        error_msg = f"❌ Pipeline {pipeline_name} failed: {str(e)}"
-                        log(error_msg, is_error=True)
-                        failed_combinations.append({
-                            "pipeline": pipeline_name,
-                            "error": str(e),
-                            "components": {
-                                "reader": reader,
-                                "chunker": chunker,
-                                "embedder": embedder
-                            }
-                        })
+                        try:
+                            await test_pipeline(reader, chunker, embedder, generator, log)
+                            successful_combinations.append(pipeline_name)
+                            log(f"✓ Pipeline {pipeline_name} completed successfully")
+                        except Exception as e:
+                            error_msg = f"❌ Pipeline {pipeline_name} failed: {str(e)}"
+                            log(error_msg, is_error=True)
+                            failed_combinations.append({
+                                "pipeline": pipeline_name,
+                                "error": str(e),
+                                "components": {
+                                    "reader": reader,
+                                    "chunker": chunker,
+                                    "embedder": embedder,
+                                    "generator": generator
+                                }
+                            })
 
         # Print summary
         log("\n=== Test Summary ===")
@@ -662,6 +675,7 @@ async def main():
                 log(f"  - Reader: {failure['components']['reader']}")
                 log(f"  - Chunker: {failure['components']['chunker']}")
                 log(f"  - Embedder: {failure['components']['embedder']}")
+                log(f"  - Generator: {failure['components']['generator']}")
                 log(f"Error: {failure['error']}")
                 log("-" * 50)
 
