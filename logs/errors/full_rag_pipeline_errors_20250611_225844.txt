@@ -1,0 +1,1 @@
+❌ Pipeline Default-Recursive-OpenAI-OpenAI failed: Failed to insert vectors into collection test_collection

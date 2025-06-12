@@ -1,0 +1,1998 @@
+
+=== Testing Full RAG Pipeline with All Component Combinations ===
+
+Test started at: 2025-06-11 23:30:11
+
+
+Testing 1 combinations...
+
+Testing combination 1/1
+Pipeline: Default-Recursive-OpenAI-OpenAI
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: OpenAI
+Generator: OpenAI
+==================================================
+
+Using vector dimension: 1536
+1. Connecting to Qdrant...
+✓ Successfully connected to Qdrant
+
+2. Importing document...
+✓ Document imported successfully
+
+3. Testing questions about the Throne of the Verdant Flame...
+
+Test Case 1:
+
+Question: What is the Throne of the Verdant Flame?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+High Relevancy: 0.44
+# Throne of the Verdant Flame
+Chunk: 2
+High Relevancy: 0.54
+The Throne of the Verdant Flame is an ancient artifact of immense power and significance, crafted during the Age of Eternal Spring. This magnificent seat of power is said to be the source of all
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.47
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.56
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+Chunk: 26
+High Relevancy: 0.46
+Many legends surround the throne, including:
+- It is said to have been grown from a seed planted by the first tree
+- Some believe it contains the soul of the first Nature Guardian
+Chunk: 27
+- There are tales of it being able to communicate with the world tree
+- It is rumored to hold the secret to eternal life, though this has never been proven
+Chunk: 28
+## Current Guardian
+
+
+
+
+Generating answer...
+Answer: The
+Answer:  Throne
+Answer:  of
+Answer:  the
+Answer:  Verd
+Answer: ant
+Answer:  Flame
+Answer:  is
+Answer:  an
+Answer:  ancient
+Answer:  artifact
+Answer:  of
+Answer:  immense
+Answer:  power
+Answer:  and
+Answer:  significance
+Answer: ,
+Answer:  crafted
+Answer:  during
+Answer:  the
+Answer:  Age
+Answer:  of
+Answer:  Eternal
+Answer:  Spring
+Answer: .
+Answer:  It
+Answer:  is
+Answer:  believed
+Answer:  to
+Answer:  be
+Answer:  the
+Answer:  source
+Answer:  of
+Answer:  all
+Answer:  natural
+Answer:  magic
+Answer:  in
+Answer:  the
+Answer:  realm
+Answer: .
+Answer:  The
+Answer:  throne
+Answer:  is
+Answer:  crafted
+Answer:  from
+Answer:  living
+Answer:  wood
+Answer: ,
+Answer:  constantly
+Answer:  shifting
+Answer:  and
+Answer:  growing
+Answer:  with
+Answer:  the
+Answer:  seasons
+Answer: .
+Answer:  It
+Answer:  has
+Answer:  a
+Answer:  deep
+Answer:  em
+Answer: erald
+Answer:  color
+Answer:  with
+Answer:  veins
+Answer:  of
+Answer:  golden
+Answer:  sap
+Answer:  puls
+Answer: ing
+Answer:  with
+Answer:  magical
+Answer:  energy
+Answer: .
+Answer:  The
+Answer:  back
+Answer: rest
+Answer:  is
+Answer:  formed
+Answer:  from
+Answer:  intertw
+Answer: ining
+Answer:  branches
+Answer:  creating
+Answer:  an
+Answer:  intricate
+Answer:  pattern
+Answer:  of
+Answer:  leaves
+Answer:  and
+Answer:  flowers
+Answer:  that
+Answer:  bloom
+Answer:  and
+Answer:  with
+Answer: er
+Answer:  in
+Answer:  response
+Answer:  to
+Answer:  the
+Answer:  throne
+Answer: 's
+Answer:  occup
+Answer: ant
+Answer: .
+Answer:  The
+Answer:  Throne
+Answer:  of
+Answer:  the
+Answer:  Verd
+Answer: ant
+Answer:  Flame
+Answer:  symbol
+Answer: izes
+Answer:  the
+Answer:  eternal
+Answer:  cycle
+Answer:  of
+Answer:  life
+Answer:  and
+Answer:  death
+Answer: ,
+Answer:  the
+Answer:  balance
+Answer:  between
+Answer:  civilization
+Answer:  and
+Answer:  nature
+Answer: ,
+Answer:  the
+Answer:  responsibility
+Answer:  of
+Answer:  power
+Answer: ,
+Answer:  and
+Answer:  the
+Answer:  interconnected
+Answer: ness
+Answer:  of
+Answer:  all
+Answer:  living
+Answer:  things
+Answer: .
+Answer:  Legends
+Answer:  and
+Answer:  myths
+Answer:  surrounding
+Answer:  the
+Answer:  throne
+Answer:  include
+Answer:  its
+Answer:  origin
+Answer:  from
+Answer:  a
+Answer:  seed
+Answer:  planted
+Answer:  by
+Answer:  the
+Answer:  first
+Answer:  tree
+Answer:  and
+Answer:  that
+Answer:  it
+Answer:  may
+Answer:  contain
+Answer:  the
+Answer:  soul
+Answer:  of
+Answer:  the
+Answer:  first
+Answer:  Nature
+Answer:  Guardian
+Answer: .
+Answer:  Mis
+Answer: use
+Answer:  of
+Answer:  the
+Answer:  throne
+Answer: 's
+Answer:  power
+Answer:  can
+Answer:  lead
+Answer:  to
+Answer:  catastrophic
+Answer:  im
+Answer: balances
+Answer:  in
+Answer:  the
+Answer:  natural
+Answer:  world
+Answer: .
+--------------------------------------------------------------------------------
+
+Test Case 2:
+
+Question: What are the key features or characteristics of the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.43
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.38
+to the throne's occupant.
+Chunk: 8
+High Relevancy: 0.41
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 10
+2. **Seasonal Control**: The occupant can manipulate the seasons in the surrounding area, though this power is limited by the natural balance of the world.
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.40
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.38
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+
+
+
+
+Generating answer...
+Answer: The
+Answer:  key
+Answer:  features
+Answer:  or
+Answer:  characteristics
+Answer:  of
+Answer:  the
+Answer:  throne
+Answer:  described
+Answer:  in
+Answer:  the
+Answer:  context
+Answer:  provided
+Answer:  are
+Answer:  as
+Answer:  follows
+Answer: :
+
+
+Answer: 1
+Answer: .
+Answer:  **
+Answer: Physical
+Answer:  Description
+Answer: **
+Answer: :
+
+Answer:   
+Answer:  -
+Answer:  Craft
+Answer: ed
+Answer:  from
+Answer:  living
+Answer:  wood
+Answer:  that
+Answer:  constantly
+Answer:  shifts
+Answer:  and
+Answer:  grows
+Answer:  with
+Answer:  the
+Answer:  seasons
+Answer: .
+
+Answer:   
+Answer:  -
+Answer:  Deep
+Answer:  em
+Answer: erald
+Answer:  color
+Answer:  with
+Answer:  veins
+Answer:  of
+Answer:  golden
+Answer:  sap
+Answer:  that
+Answer:  pulse
+Answer:  with
+Answer:  magical
+Answer:  energy
+Answer: .
+
+Answer:   
+Answer:  -
+Answer:  Back
+Answer: rest
+Answer:  formed
+Answer:  from
+Answer:  intertw
+Answer: ining
+Answer:  branches
+Answer:  creating
+Answer:  an
+Answer:  intricate
+Answer:  pattern
+Answer:  of
+Answer:  leaves
+Answer:  and
+Answer:  flowers
+Answer: .
+
+
+Answer: 2
+Answer: .
+Answer:  **
+Answer: Mag
+Answer: ical
+Answer:  Properties
+Answer: **
+Answer: :
+
+Answer:   
+Answer:  -
+Answer:  **
+Answer: Life
+Answer:  Force
+Answer:  Manip
+Answer: ulation
+Answer: **:
+Answer:  Can
+Answer:  sense
+Answer:  and
+Answer:  influence
+Answer:  the
+Answer:  life
+Answer:  force
+Answer:  of
+Answer:  all
+Answer:  living
+Answer:  beings
+Answer:  within
+Answer:  its
+Answer:  domain
+Answer: .
+
+Answer:   
+Answer:  -
+Answer:  **
+Answer: Season
+Answer: al
+Answer:  Control
+Answer: **:
+Answer:  The
+Answer:  occup
+Answer: ant
+Answer:  can
+Answer:  manipulate
+Answer:  the
+Answer:  seasons
+Answer:  in
+Answer:  the
+Answer:  surrounding
+Answer:  area
+Answer: ,
+Answer:  within
+Answer:  the
+Answer:  limits
+Answer:  of
+Answer:  natural
+Answer:  balance
+Answer: .
+
+Answer:   
+Answer:  -
+Answer:  To
+Answer:  access
+Answer:  the
+Answer:  throne
+Answer: 's
+Answer:  power
+Answer: ,
+Answer:  one
+Answer:  must
+Answer:  be
+Answer:  chosen
+Answer:  by
+Answer:  the
+Answer:  current
+Answer:  Nature
+Answer:  Guardian
+Answer: ,
+Answer:  possess
+Answer:  a
+Answer:  strong
+Answer:  connection
+Answer:  to
+Answer:  natural
+Answer:  magic
+Answer: ,
+Answer:  have
+Answer:  pure
+Answer:  intentions
+Answer:  toward
+Answer:  nature
+Answer:  preservation
+Answer: ,
+Answer:  and
+Answer:  complete
+Answer:  the
+Answer:  R
+Answer: ite
+Answer:  of
+Answer:  Verd
+Answer: ant
+Answer:  Binding
+Answer: .
+
+
+Answer: 3
+Answer: .
+Answer:  **
+Answer: Symbol
+Answer: ism
+Answer: **
+Answer: :
+
+Answer:   
+Answer:  -
+Answer:  Represents
+Answer:  the
+Answer:  eternal
+Answer:  cycle
+Answer:  of
+Answer:  life
+Answer:  and
+Answer:  death
+Answer: .
+
+Answer:   
+Answer:  -
+Answer:  Represents
+Answer:  the
+Answer:  balance
+Answer:  between
+Answer:  civilization
+Answer:  and
+Answer:  nature
+Answer: .
+
+Answer:   
+Answer:  -
+Answer:  Symbol
+Answer: izes
+Answer:  the
+Answer:  responsibility
+Answer:  of
+Answer:  power
+Answer: .
+
+Answer:   
+Answer:  -
+Answer:  Symbol
+Answer: izes
+Answer:  the
+Answer:  interconnected
+Answer: ness
+Answer:  of
+Answer:  all
+Answer:  living
+Answer:  things
+Answer: .
+
+
+Answer: Additional
+Answer:  information
+Answer:  highlights
+Answer:  that
+Answer:  the
+Answer:  throne
+Answer: 's
+Answer:  power
+Answer:  should
+Answer:  not
+Answer:  be
+Answer:  taken
+Answer:  lightly
+Answer: ,
+Answer:  as
+Answer:  its
+Answer:  misuse
+Answer:  can
+Answer:  lead
+Answer:  to
+Answer:  catastrophic
+Answer:  im
+Answer: balances
+Answer:  in
+Answer:  the
+Answer:  natural
+Answer:  world
+Answer: .
+--------------------------------------------------------------------------------
+
+Test Case 3:
+
+Question: What is the significance or importance of the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 1
+# Throne of the Verdant Flame
+Chunk: 2
+High Relevancy: 0.36
+The Throne of the Verdant Flame is an ancient artifact of immense power and significance, crafted during the Age of Eternal Spring. This magnificent seat of power is said to be the source of all
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.37
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.39
+to the throne's occupant.
+Chunk: 8
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.45
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.39
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+
+
+
+
+Generating answer...
+Answer: The
+Answer:  Throne
+Answer:  of
+Answer:  the
+Answer:  Verd
+Answer: ant
+Answer:  Flame
+Answer:  holds
+Answer:  immense
+Answer:  significance
+Answer:  and
+Answer:  importance
+Answer:  due
+Answer:  to
+Answer:  several
+Answer:  reasons
+Answer:  outlined
+Answer:  in
+Answer:  the
+Answer:  provided
+Answer:  context
+Answer: :
+
+
+Answer: 1
+Answer: .
+Answer:  **
+Answer: Source
+Answer:  of
+Answer:  Natural
+Answer:  Magic
+Answer: **:
+Answer:  The
+Answer:  throne
+Answer:  is
+Answer:  believed
+Answer:  to
+Answer:  be
+Answer:  the
+Answer:  source
+Answer:  of
+Answer:  all
+Answer:  natural
+Answer:  magic
+Answer:  in
+Answer:  the
+Answer:  realm
+Answer: ,
+Answer:  indicating
+Answer:  its
+Answer:  connection
+Answer:  to
+Answer:  mystical
+Answer:  energies
+Answer:  and
+Answer:  forces
+Answer:  that
+Answer:  govern
+Answer:  the
+Answer:  world
+Answer: .
+
+
+Answer: 2
+Answer: .
+Answer:  **
+Answer: Artifact
+Answer:  of
+Answer:  Imm
+Answer: ense
+Answer:  Power
+Answer: **:
+Answer:  Craft
+Answer: ed
+Answer:  during
+Answer:  the
+Answer:  Age
+Answer:  of
+Answer:  Eternal
+Answer:  Spring
+Answer: ,
+Answer:  the
+Answer:  throne
+Answer:  is
+Answer:  described
+Answer:  as
+Answer:  an
+Answer:  ancient
+Answer:  artifact
+Answer:  of
+Answer:  immense
+Answer:  power
+Answer: ,
+Answer:  suggesting
+Answer:  that
+Answer:  it
+Answer:  holds
+Answer:  great
+Answer:  influence
+Answer:  and
+Answer:  potential
+Answer:  over
+Answer:  the
+Answer:  forces
+Answer:  of
+Answer:  nature
+Answer:  and
+Answer:  magic
+Answer: .
+
+
+Answer: 3
+Answer: .
+Answer:  **
+Answer: Symbol
+Answer: ism
+Answer: **:
+Answer:  The
+Answer:  Throne
+Answer:  of
+Answer:  the
+Answer:  Verd
+Answer: ant
+Answer:  Flame
+Answer:  symbol
+Answer: izes
+Answer:  various
+Answer:  aspects
+Answer: ,
+Answer:  including
+Answer:  the
+Answer:  eternal
+Answer:  cycle
+Answer:  of
+Answer:  life
+Answer:  and
+Answer:  death
+Answer: ,
+Answer:  the
+Answer:  balance
+Answer:  between
+Answer:  civilization
+Answer:  and
+Answer:  nature
+Answer: ,
+Answer:  the
+Answer:  responsibility
+Answer:  of
+Answer:  power
+Answer: ,
+Answer:  and
+Answer:  the
+Answer:  interconnected
+Answer: ness
+Answer:  of
+Answer:  all
+Answer:  living
+Answer:  things
+Answer: .
+Answer:  These
+Answer:  symbolic
+Answer:  representations
+Answer:  highlight
+Answer:  deeper
+Answer:  philosophical
+Answer:  and
+Answer:  metaph
+Answer: ysical
+Answer:  meanings
+Answer:  associated
+Answer:  with
+Answer:  the
+Answer:  throne
+Answer: .
+
+
+Answer: 4
+Answer: .
+Answer:  **
+Answer: Mag
+Answer: ical
+Answer:  Properties
+Answer: **:
+Answer:  The
+Answer:  throne
+Answer:  possesses
+Answer:  unique
+Answer:  magical
+Answer:  properties
+Answer:  such
+Answer:  as
+Answer:  the
+Answer:  ability
+Answer:  to
+Answer:  manipulate
+Answer:  life
+Answer:  forces
+Answer: ,
+Answer:  requiring
+Answer:  specific
+Answer:  criteria
+Answer:  for
+Answer:  individuals
+Answer:  to
+Answer:  access
+Answer:  its
+Answer:  power
+Answer: ,
+Answer:  and
+Answer:  emphasizing
+Answer:  the
+Answer:  caution
+Answer:  needed
+Answer:  to
+Answer:  prevent
+Answer:  misuse
+Answer:  that
+Answer:  could
+Answer:  lead
+Answer:  to
+Answer:  catastrophic
+Answer:  im
+Answer: balances
+Answer:  in
+Answer:  nature
+Answer: .
+
+
+Answer: In
+Answer:  essence
+Answer: ,
+Answer:  the
+Answer:  throne
+Answer:  serves
+Answer:  as
+Answer:  a
+Answer:  mystical
+Answer:  seat
+Answer:  of
+Answer:  power
+Answer:  that
+Answer:  embodies
+Answer:  ancient
+Answer:  wisdom
+Answer: ,
+Answer:  magical
+Answer:  abilities
+Answer: ,
+Answer:  and
+Answer:  profound
+Answer:  symbolism
+Answer: ,
+Answer:  making
+Answer:  it
+Answer:  a
+Answer:  focal
+Answer:  point
+Answer:  of
+Answer:  reverence
+Answer:  and
+Answer:  respect
+Answer:  within
+Answer:  the
+Answer:  realm
+Answer: .
+--------------------------------------------------------------------------------
+
+Test Case 4:
+
+Question: What materials or elements is the throne made of?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 2
+High Relevancy: 0.37
+The Throne of the Verdant Flame is an ancient artifact of immense power and significance, crafted during the Age of Eternal Spring. This magnificent seat of power is said to be the source of all
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.49
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 22
+High Relevancy: 0.37
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.36
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 30
+High Relevancy: 0.36
+to the natural laws that govern the throne's use.
+
+
+
+
+Generating answer...
+Answer: The
+Answer:  throne
+Answer:  of
+Answer:  the
+Answer:  Verd
+Answer: ant
+Answer:  Flame
+Answer:  is
+Answer:  crafted
+Answer:  from
+Answer:  living
+Answer:  wood
+Answer: .
+Answer:  Its
+Answer:  surface
+Answer:  is
+Answer:  constantly
+Answer:  shifting
+Answer:  and
+Answer:  growing
+Answer:  with
+Answer:  the
+Answer:  seasons
+Answer: ,
+Answer:  showcasing
+Answer:  a
+Answer:  deep
+Answer:  em
+Answer: erald
+Answer:  color
+Answer:  with
+Answer:  veins
+Answer:  of
+Answer:  golden
+Answer:  sap
+Answer:  that
+Answer:  pulse
+Answer:  with
+Answer:  magical
+Answer:  energy
+Answer: .
+Answer:  The
+Answer:  back
+Answer: rest
+Answer:  is
+Answer:  formed
+Answer:  from
+Answer:  intertw
+Answer: ining
+Answer:  branches
+Answer:  that
+Answer:  create
+Answer:  an
+Answer:  intricate
+Answer:  pattern
+Answer:  of
+Answer:  leaves
+Answer:  and
+Answer:  flowers
+Answer: ,
+Answer:  each
+Answer:  capable
+Answer:  of
+Answer:  blo
+Answer: oming
+Answer:  and
+Answer:  with
+Answer: ering
+Answer:  in
+Answer:  response
+Answer:  to
+Answer:  the
+Answer:  throne
+Answer: 's
+Answer:  occup
+Answer: ant
+Answer: .
+Answer:  This
+Answer:  unique
+Answer:  throne
+Answer: 's
+Answer:  material
+Answer:  and
+Answer:  elements
+Answer:  reflect
+Answer:  its
+Answer:  connection
+Answer:  to
+Answer:  nature
+Answer:  and
+Answer:  magic
+Answer: ,
+Answer:  emphasizing
+Answer:  its
+Answer:  significant
+Answer:  role
+Answer:  in
+Answer:  the
+Answer:  realm
+Answer: 's
+Answer:  natural
+Answer:  magic
+Answer:  and
+Answer:  power
+Answer:  balance
+Answer: .
+--------------------------------------------------------------------------------
+
+Test Case 5:
+
+Question: What is the history or origin of the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.36
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.36
+to the throne's occupant.
+Chunk: 8
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 12
+4. **Healing Aura**: A gentle healing energy emanates from the throne, promoting growth and recovery in nearby living things.
+Chunk: 13
+## Historical Significance
+Chunk: 14
+High Relevancy: 0.36
+The throne was created by the first Nature Guardian, a powerful druid who sought to maintain balance between civilization and the natural world. It has been passed down through generations of
+Chunk: 15
+generations of guardians, each adding their own magical enhancements and protections.
+Chunk: 16
+## Current Status
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.35
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+Chunk: 26
+High Relevancy: 0.37
+Many legends surround the throne, including:
+- It is said to have been grown from a seed planted by the first tree
+- Some believe it contains the soul of the first Nature Guardian
+Chunk: 27
+- There are tales of it being able to communicate with the world tree
+- It is rumored to hold the secret to eternal life, though this has never been proven
+Chunk: 28
+## Current Guardian
+
+
+
+
+Generating answer...
+Answer: The
+Answer:  throne
+Answer:  mentioned
+Answer:  in
+Answer:  the
+Answer:  context
+Answer:  is
+Answer:  the
+Answer:  Throne
+Answer:  of
+Answer:  the
+Answer:  Verd
+Answer: ant
+Answer:  Flame
+Answer: ,
+Answer:  created
+Answer:  by
+Answer:  the
+Answer:  first
+Answer:  Nature
+Answer:  Guardian
+Answer: ,
+Answer:  a
+Answer:  powerful
+Answer:  dr
+Answer: uid
+Answer:  who
+Answer:  aimed
+Answer:  to
+Answer:  maintain
+Answer:  balance
+Answer:  between
+Answer:  civilization
+Answer:  and
+Answer:  the
+Answer:  natural
+Answer:  world
+Answer: .
+Answer:  This
+Answer:  throne
+Answer:  has
+Answer:  been
+Answer:  passed
+Answer:  down
+Answer:  through
+Answer:  generations
+Answer:  of
+Answer:  guardians
+Answer: ,
+Answer:  with
+Answer:  each
+Answer:  adding
+Answer:  their
+Answer:  own
+Answer:  magical
+Answer:  enhancements
+Answer:  and
+Answer:  protections
+Answer: .
+Answer:  It
+Answer:  is
+Answer:  crafted
+Answer:  from
+Answer:  living
+Answer:  wood
+Answer:  with
+Answer:  deep
+Answer:  em
+Answer: erald
+Answer:  color
+Answer:  and
+Answer:  golden
+Answer:  sap
+Answer:  veins
+Answer: ,
+Answer:  puls
+Answer: ing
+Answer:  with
+Answer:  magical
+Answer:  energy
+Answer: .
+
+
+Answer: The
+Answer:  throne
+Answer:  is
+Answer:  not
+Answer:  just
+Answer:  a
+Answer:  physical
+Answer:  object
+Answer:  but
+Answer:  possesses
+Answer:  unique
+Answer:  magical
+Answer:  properties
+Answer: ,
+Answer:  such
+Answer:  as
+Answer:  Life
+Answer:  Force
+Answer:  Manip
+Answer: ulation
+Answer:  and
+Answer:  a
+Answer:  Healing
+Answer:  Aura
+Answer:  that
+Answer:  promotes
+Answer:  growth
+Answer:  and
+Answer:  recovery
+Answer: .
+Answer:  To
+Answer:  access
+Answer:  its
+Answer:  power
+Answer: ,
+Answer:  one
+Answer:  must
+Answer:  be
+Answer:  chosen
+Answer:  by
+Answer:  the
+Answer:  current
+Answer:  Nature
+Answer:  Guardian
+Answer: ,
+Answer:  have
+Answer:  a
+Answer:  strong
+Answer:  connection
+Answer:  to
+Answer:  natural
+Answer:  magic
+Answer: ,
+Answer:  pure
+Answer:  intentions
+Answer:  towards
+Answer:  the
+Answer:  preservation
+Answer:  of
+Answer:  nature
+Answer: ,
+Answer:  and
+Answer:  complete
+Answer:  the
+Answer:  R
+Answer: ite
+Answer:  of
+Answer:  Verd
+Answer: ant
+Answer:  Binding
+Answer: .
+
+
+Answer: Leg
+Answer: ends
+Answer:  and
+Answer:  myths
+Answer:  surround
+Answer:  the
+Answer:  throne
+Answer: ,
+Answer:  including
+Answer:  beliefs
+Answer:  that
+Answer:  it
+Answer:  was
+Answer:  grown
+Answer:  from
+Answer:  a
+Answer:  seed
+Answer:  planted
+Answer:  by
+Answer:  the
+Answer:  first
+Answer:  tree
+Answer: ,
+Answer:  contains
+Answer:  the
+Answer:  soul
+Answer:  of
+Answer:  the
+Answer:  first
+Answer:  Nature
+Answer:  Guardian
+Answer: ,
+Answer:  can
+Answer:  communicate
+Answer:  with
+Answer:  the
+Answer:  world
+Answer:  tree
+Answer: ,
+Answer:  and
+Answer:  holds
+Answer:  the
+Answer:  secret
+Answer:  to
+Answer:  eternal
+Answer:  life
+Answer:  although
+Answer:  this
+Answer:  has
+Answer:  never
+Answer:  been
+Answer:  proven
+Answer: .
+Answer:  The
+Answer:  throne
+Answer:  symbol
+Answer: izes
+Answer:  the
+Answer:  eternal
+Answer:  cycle
+Answer:  of
+Answer:  life
+Answer:  and
+Answer:  death
+Answer: ,
+Answer:  the
+Answer:  balance
+Answer:  between
+Answer:  civilization
+Answer:  and
+Answer:  nature
+Answer: ,
+Answer:  the
+Answer:  responsibility
+Answer:  of
+Answer:  power
+Answer: ,
+Answer:  and
+Answer:  the
+Answer:  interconnected
+Answer: ness
+Answer:  of
+Answer:  all
+Answer:  living
+Answer:  things
+Answer: .
+--------------------------------------------------------------------------------
+
+Test Case 6:
+
+Question: What powers or abilities are associated with the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 8
+High Relevancy: 0.45
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 10
+2. **Seasonal Control**: The occupant can manipulate the seasons in the surrounding area, though this power is limited by the natural balance of the world.
+Chunk: 12
+4. **Healing Aura**: A gentle healing energy emanates from the throne, promoting growth and recovery in nearby living things.
+Chunk: 13
+## Historical Significance
+Chunk: 14
+High Relevancy: 0.41
+The throne was created by the first Nature Guardian, a powerful druid who sought to maintain balance between civilization and the natural world. It has been passed down through generations of
+Chunk: 15
+generations of guardians, each adding their own magical enhancements and protections.
+Chunk: 16
+## Current Status
+Chunk: 18
+nature can approach the throne without being repelled by its protective magic.
+Chunk: 19
+## Access and Usage
+Chunk: 20
+High Relevancy: 0.46
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.47
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.42
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+
+
+
+
+Generating answer...
+Answer: The
+Answer:  powers
+Answer:  and
+Answer:  abilities
+Answer:  associated
+Answer:  with
+Answer:  the
+Answer:  throne
+Answer:  include
+Answer: :
+
+
+Answer: 1
+Answer: .
+Answer:  **
+Answer: Life
+Answer:  Force
+Answer:  Manip
+Answer: ulation
+Answer: **:
+Answer:  The
+Answer:  throne
+Answer:  can
+Answer:  sense
+Answer:  and
+Answer:  influence
+Answer:  the
+Answer:  life
+Answer:  force
+Answer:  of
+Answer:  all
+Answer:  living
+Answer:  beings
+Answer:  within
+Answer:  its
+Answer:  domain
+Answer: .
+
+Answer: 2
+Answer: .
+Answer:  **
+Answer: Season
+Answer: al
+Answer:  Control
+Answer: **:
+Answer:  The
+Answer:  occup
+Answer: ant
+Answer:  can
+Answer:  manipulate
+Answer:  the
+Answer:  seasons
+Answer:  in
+Answer:  the
+Answer:  surrounding
+Answer:  area
+Answer: ,
+Answer:  though
+Answer:  this
+Answer:  power
+Answer:  is
+Answer:  limited
+Answer:  by
+Answer:  the
+Answer:  natural
+Answer:  balance
+Answer:  of
+Answer:  the
+Answer:  world
+Answer: .
+
+Answer: 3
+Answer: .
+Answer:  **
+Answer: He
+Answer: aling
+Answer:  Aura
+Answer: **:
+Answer:  A
+Answer:  gentle
+Answer:  healing
+Answer:  energy
+Answer:  eman
+Answer: ates
+Answer:  from
+Answer:  the
+Answer:  throne
+Answer: ,
+Answer:  promoting
+Answer:  growth
+Answer:  and
+Answer:  recovery
+Answer:  in
+Answer:  nearby
+Answer:  living
+Answer:  things
+Answer: .
+--------------------------------------------------------------------------------
+
+Test Case 7:
+
+Question: Who can use or access the throne?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.37
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+High Relevancy: 0.44
+to the throne's occupant.
+Chunk: 8
+## Magical Properties
+
+The throne possesses several unique magical properties:
+Chunk: 9
+1. **Life Force Manipulation**: The throne can sense and influence the life force of all living beings within its domain.
+Chunk: 18
+nature can approach the throne without being repelled by its protective magic.
+Chunk: 19
+## Access and Usage
+Chunk: 20
+High Relevancy: 0.37
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.38
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 28
+## Current Guardian
+Chunk: 29
+The current guardian of the throne is High Druid Elara Greenleaf, who has maintained the position for over three centuries. She is known for her wisdom and her strict adherence to the natural laws
+Chunk: 30
+High Relevancy: 0.39
+to the natural laws that govern the throne's use.
+
+
+
+
+Generating answer...
+Answer: Who
+Answer:  can
+Answer:  use
+Answer:  or
+Answer:  access
+Answer:  the
+Answer:  throne
+Answer: :
+
+Answer: To
+Answer:  access
+Answer:  the
+Answer:  throne
+Answer: 's
+Answer:  power
+Answer: ,
+Answer:  one
+Answer:  must
+Answer: :
+
+Answer: 1
+Answer: .
+Answer:  Be
+Answer:  chosen
+Answer:  by
+Answer:  the
+Answer:  current
+Answer:  Nature
+Answer:  Guardian
+Answer: ,
+Answer:  who
+Answer:  is
+Answer:  currently
+Answer:  High
+Answer:  Druid
+Answer:  El
+Answer: ara
+Answer:  Green
+Answer: leaf
+Answer: .
+
+Answer: 2
+Answer: .
+Answer:  Poss
+Answer: ess
+Answer:  a
+Answer:  strong
+Answer:  connection
+Answer:  to
+Answer:  natural
+Answer:  magic
+Answer: .
+
+Answer: 3
+Answer: .
+Answer:  Have
+Answer:  pure
+Answer:  intentions
+Answer:  towards
+Answer:  the
+Answer:  preservation
+Answer:  of
+Answer:  nature
+Answer: .
+
+Answer: 4
+Answer: .
+Answer:  Complete
+Answer:  the
+Answer:  R
+Answer: ite
+Answer:  of
+Answer:  Verd
+Answer: ant
+Answer:  Binding
+Answer: .
+
+
+Answer: It
+Answer: 's
+Answer:  important
+Answer:  to
+Answer:  note
+Answer:  that
+Answer:  the
+Answer:  throne
+Answer: 's
+Answer:  power
+Answer:  is
+Answer:  not
+Answer:  to
+Answer:  be
+Answer:  taken
+Answer:  lightly
+Answer: ,
+Answer:  as
+Answer:  misuse
+Answer:  can
+Answer:  lead
+Answer:  to
+Answer:  catastrophic
+Answer:  im
+Answer: balances
+Answer:  in
+Answer:  the
+Answer:  natural
+Answer:  world
+Answer: .
+--------------------------------------------------------------------------------
+
+Test Case 8:
+
+Question: What are the main themes or symbolism in the throne's description?
+
+Retrieved context:
+Document Title: test_collection
+Chunk: 3
+the source of all natural magic in the realm.
+Chunk: 4
+## Physical Description
+Chunk: 5
+High Relevancy: 0.42
+The throne is crafted from living wood, its surface constantly shifting and growing with the seasons. The wood is a deep emerald color, with veins of golden sap that pulse with magical energy. The
+Chunk: 6
+magical energy. The backrest is formed from intertwining branches that create an intricate pattern of leaves and flowers, each one capable of blooming and withering in response to the throne's
+Chunk: 7
+to the throne's occupant.
+Chunk: 20
+To access the throne's power, one must:
+1. Be chosen by the current Nature Guardian
+2. Possess a strong connection to natural magic
+3. Have pure intentions towards the preservation of nature
+Chunk: 21
+4. Complete the Rite of Verdant Binding
+Chunk: 22
+High Relevancy: 0.51
+The throne's power is not to be taken lightly, as misuse can lead to catastrophic imbalances in the natural world.
+
+## Symbolism
+Chunk: 23
+High Relevancy: 0.48
+The Throne of the Verdant Flame represents:
+- The eternal cycle of life and death
+- The balance between civilization and nature
+- The responsibility of power
+Chunk: 24
+- The interconnectedness of all living things
+Chunk: 25
+## Legends and Myths
+Chunk: 26
+High Relevancy: 0.37
+Many legends surround the throne, including:
+- It is said to have been grown from a seed planted by the first tree
+- Some believe it contains the soul of the first Nature Guardian
+Chunk: 30
+High Relevancy: 0.38
+to the natural laws that govern the throne's use.
+
+
+
+
+Generating answer...
+Answer: The
+Answer:  main
+Answer:  themes
+Answer:  and
+Answer:  symbolism
+Answer:  found
+Answer:  in
+Answer:  the
+Answer:  description
+Answer:  of
+Answer:  the
+Answer:  throne
+Answer:  include
+Answer: :
+
+
+Answer: 1
+Answer: .
+Answer:  Eternal
+Answer:  Cycle
+Answer:  of
+Answer:  Life
+Answer:  and
+Answer:  Death
+Answer: :
+Answer:  The
+Answer:  Throne
+Answer:  of
+Answer:  the
+Answer:  Verd
+Answer: ant
+Answer:  Flame
+Answer:  symbol
+Answer: izes
+Answer:  the
+Answer:  continuous
+Answer:  cycle
+Answer:  of
+Answer:  life
+Answer:  and
+Answer:  death
+Answer: ,
+Answer:  reflecting
+Answer:  the
+Answer:  natural
+Answer:  order
+Answer:  and
+Answer:  processes
+Answer:  of
+Answer:  growth
+Answer: ,
+Answer:  decay
+Answer: ,
+Answer:  and
+Answer:  renewal
+Answer: .
+
+
+Answer: 2
+Answer: .
+Answer:  Balance
+Answer:  Between
+Answer:  Civilization
+Answer:  and
+Answer:  Nature
+Answer: :
+Answer:  The
+Answer:  throne
+Answer:  represents
+Answer:  the
+Answer:  delicate
+Answer:  balance
+Answer:  that
+Answer:  must
+Answer:  be
+Answer:  maintained
+Answer:  between
+Answer:  human
+Answer:  society
+Answer:  (
+Answer: civil
+Answer: ization
+Answer: )
+Answer:  and
+Answer:  the
+Answer:  natural
+Answer:  world
+Answer: ,
+Answer:  emphasizing
+Answer:  the
+Answer:  importance
+Answer:  of
+Answer:  co
+Answer: existing
+Answer:  harmon
+Answer: iously
+Answer:  with
+Answer:  nature
+Answer: .
+
+
+Answer: 3
+Answer: .
+Answer:  Responsibility
+Answer:  of
+Answer:  Power
+Answer: :
+Answer:  The
+Answer:  symbolism
+Answer:  of
+Answer:  the
+Answer:  throne
+Answer:  highlights
+Answer:  the
+Answer:  responsibility
+Answer:  that
+Answer:  comes
+Answer:  with
+Answer:  wielding
+Answer:  power
+Answer: ,
+Answer:  particularly
+Answer:  in
+Answer:  terms
+Answer:  of
+Answer:  using
+Answer:  it
+Answer:  wisely
+Answer:  and
+Answer:  with
+Answer:  pure
+Answer:  intentions
+Answer:  towards
+Answer:  the
+Answer:  preservation
+Answer:  of
+Answer:  nature
+Answer: .
+
+
+Answer: 4
+Answer: .
+Answer:  Inter
+Answer: connected
+Answer: ness
+Answer:  of
+Answer:  All
+Answer:  Living
+Answer:  Things
+Answer: :
+Answer:  The
+Answer:  intricate
+Answer:  design
+Answer:  of
+Answer:  the
+Answer:  throne
+Answer: ,
+Answer:  with
+Answer:  its
+Answer:  intertw
+Answer: ining
+Answer:  branches
+Answer:  and
+Answer:  blo
+Answer: oming
+Answer:  flowers
+Answer: ,
+Answer:  signifies
+Answer:  the
+Answer:  interconnected
+Answer: ness
+Answer:  of
+Answer:  all
+Answer:  living
+Answer:  beings
+Answer:  and
+Answer:  the
+Answer:  harmony
+Answer:  that
+Answer:  exists
+Answer:  within
+Answer:  nature
+Answer: 's
+Answer:  ecosystem
+Answer: .
+
+
+Answer: These
+Answer:  themes
+Answer:  and
+Answer:  symbolism
+Answer:  reflect
+Answer:  deeper
+Answer:  philosophical
+Answer:  concepts
+Answer:  and
+Answer:  values
+Answer:  associated
+Answer:  with
+Answer:  the
+Answer:  throne
+Answer:  and
+Answer:  its
+Answer:  significance
+Answer:  within
+Answer:  the
+Answer:  realm
+Answer:  of
+Answer:  natural
+Answer:  magic
+Answer:  and
+Answer:  guardians
+Answer: hip
+Answer: .
+--------------------------------------------------------------------------------
+
+Cleaning up...
+✓ Cleanup completed
+✓ Pipeline Default-Recursive-OpenAI-OpenAI completed successfully
+
+=== Test Summary ===
+Total combinations tested: 1
+Successful combinations: 1
+Failed combinations: 0
+
+Test completed at: 2025-06-11 23:30:49
+Full results saved to: logs/all/full_rag_pipeline_test_results_20250611_233011.txt
+Error details saved to: logs/errors/full_rag_pipeline_errors_20250611_233011.txt
+Generated answers saved to: logs/generated_answers/generated_answers_20250611_233011.txt

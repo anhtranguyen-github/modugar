@@ -1,5 +1,6 @@
 from rag_backend.components.interfaces import Retriever
 from rag_backend.components.types import InputConfig
+from typing import Any, Optional
 
 
 class WindowRetriever(Retriever):
@@ -61,6 +62,7 @@ class WindowRetriever(Retriever):
         labels,
         document_uuids,
         collection_name: str,
+        store_name: str = "Qdrant"
     ):
         # Initialize vector store manager if not already set
         if self._vector_store_manager is None:
@@ -77,7 +79,9 @@ class WindowRetriever(Retriever):
 
         if search_mode == "Hybrid Search":
             # Use vector store manager for search
-            search_results = await self.vector_store_manager.search_vectors(
+            search_results = await self._vector_store_manager.search_vectors(
+                store_name,
+                client,
                 collection_name=collection_name,
                 query_vector=vector,
                 limit=limit,
@@ -117,7 +121,7 @@ class WindowRetriever(Retriever):
         for chunk in chunks:
             if chunk["properties"]["doc_uuid"] not in doc_map:
                 # Get document info from vector store
-                doc_info = await self.vector_store_manager.get_collection_info(collection_name)
+                doc_info = await self._vector_store_manager.get_collection_info(store_name, client, collection_name)
                 if doc_info is None:
                     continue
                 doc_map[chunk["properties"]["doc_uuid"]] = {
@@ -164,7 +168,9 @@ class WindowRetriever(Retriever):
 
             if additional_chunk_ids:
                 # Get additional chunks using vector store manager
-                additional_results = await self.vector_store_manager.search_vectors(
+                additional_results = await self._vector_store_manager.search_vectors(
+                    store_name,
+                    client,
                     collection_name=collection_name,
                     query_vector=vector,
                     limit=len(additional_chunk_ids),

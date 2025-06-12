@@ -1,0 +1,45 @@
+
+=== Testing Full RAG Pipeline with All Component Combinations ===
+
+Test started at: 2025-06-11 23:24:11
+
+
+Testing 1 combinations...
+
+Testing combination 1/1
+Pipeline: Default-Recursive-OpenAI-OpenAI
+
+=== Testing Pipeline Configuration ===
+Reader: Default
+Chunker: Recursive
+Embedder: OpenAI
+Generator: OpenAI
+==================================================
+
+
+❌ Error: Test file not found: data/Throne of the Verdant Flame.md
+
+Cleaning up...
+✓ Cleanup completed
+❌ Pipeline Default-Recursive-OpenAI-OpenAI failed: Test file not found: data/Throne of the Verdant Flame.md
+
+=== Test Summary ===
+Total combinations tested: 1
+Successful combinations: 0
+Failed combinations: 1
+
+=== Failed Pipelines ===
+
+Pipeline: Default-Recursive-OpenAI-OpenAI
+Components:
+  - Reader: Default
+  - Chunker: Recursive
+  - Embedder: OpenAI
+  - Generator: OpenAI
+Error: Test file not found: data/Throne of the Verdant Flame.md
+--------------------------------------------------
+
+Test completed at: 2025-06-11 23:24:11
+Full results saved to: logs/all/full_rag_pipeline_test_results_20250611_232411.txt
+Error details saved to: logs/errors/full_rag_pipeline_errors_20250611_232411.txt
+Generated answers saved to: logs/generated_answers/generated_answers_20250611_232411.txt

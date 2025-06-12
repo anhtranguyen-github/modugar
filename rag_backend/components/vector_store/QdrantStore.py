@@ -180,7 +180,7 @@ class QdrantStore(VectorStore):
         except Exception as e:
             raise Exception(f"Connection test failed: {str(e)}")
 
-    async def disconnect(self) -> bool:
+    async def disconnect(self, client: Any) -> bool:
         """Disconnect from Qdrant"""
         try:
             if self.client:
@@ -191,7 +191,7 @@ class QdrantStore(VectorStore):
             print(f"Debug: Error during disconnect: {str(e)}")
             return False
 
-    async def is_ready(self) -> bool:
+    async def is_ready(self, client: Any) -> bool:
         """Check if Qdrant is ready."""
         try:
             if not self.client:
@@ -202,7 +202,7 @@ class QdrantStore(VectorStore):
             print(f"Debug: Error checking readiness: {str(e)}")
             return False
 
-    async def create_collection(self, collection_name: str, **kwargs) -> bool:
+    async def create_collection(self, client: Any, collection_name: str, **kwargs) -> bool:
         """Create a new collection in Qdrant"""
         try:
             if not self.client:
@@ -228,7 +228,7 @@ class QdrantStore(VectorStore):
             print(f"Debug: Error creating collection: {str(e)}")
             return False
 
-    async def delete_collection(self, collection_name: str) -> bool:
+    async def delete_collection(self, client: Any, collection_name: str) -> bool:
         """Delete a collection from Qdrant"""
         try:
             if not self.client:
@@ -242,7 +242,7 @@ class QdrantStore(VectorStore):
             print(f"Debug: Error deleting collection: {str(e)}")
             return False
 
-    async def insert_vectors(self, collection_name: str, vectors: List[List[float]], metadata: List[Dict], **kwargs) -> List[str]:
+    async def insert_vectors(self, client: Any, collection_name: str, vectors: List[List[float]], metadata: List[Dict], **kwargs) -> List[str]:
         """Insert vectors into Qdrant collection"""
         try:
             if not self.client:
@@ -371,7 +371,7 @@ class QdrantStore(VectorStore):
         # Combine must and should conditions
         return Filter(must=must_conditions if must_conditions else None, should=should_conditions if should_conditions else None) if must_conditions or should_conditions else None
 
-    async def search_vectors(self, collection_name: str, query_vector: List[float], limit: int, **kwargs) -> List[Dict]:
+    async def search_vectors(self, client: Any, collection_name: str, query_vector: List[float], limit: int, **kwargs) -> List[Dict]:
         """Search for similar vectors in the collection"""
         try:
             if not self.client:
@@ -408,7 +408,7 @@ class QdrantStore(VectorStore):
             print(f"Debug: Error searching vectors: {str(e)}")
             return []
     
-    async def delete_vectors(self, collection_name: str, vector_ids: List[str]) -> bool:
+    async def delete_vectors(self, client: Any, collection_name: str, vector_ids: List[str]) -> bool:
         """Delete vectors from Qdrant collection"""
         try:
             if not self.client:
@@ -426,7 +426,7 @@ class QdrantStore(VectorStore):
             print(f"Debug: Error deleting vectors: {str(e)}")
             return False
     
-    async def get_collection_info(self, collection_name: str) -> Dict:
+    async def get_collection_info(self, client: Any, collection_name: str) -> Dict:
         """Get information about a Qdrant collection"""
         try:
             if not self.client:
